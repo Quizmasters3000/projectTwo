@@ -1,0 +1,37 @@
+
+// A welcome page will ask for the users name and display the title of the game. It will contain and input for the text name and a button that will trigger the start of the quiz game. This will be written in the HTML of game. It's container will be given a CSS class of 'active' as visible. Once the start button has been pushed, the name will be stored to a variable for later use. The active class will then be deactivated, rendering it and the content hidden to the screen. Simultaneously, the active class will be added to the quiz container, making the game visible to the user. 
+
+// An array of objects (quizData) will contain all the questions and radio options that users will encounter in the game. 
+
+const quizData = [
+    {
+        solution: "sad",
+        a: "anxious",
+        b: "unsure",
+        c: "happy",
+        d: "sad",
+        correct: "d",
+    },
+    {
+        solution: "heavy",
+        a: "light",
+        b: "heavy",
+        c: "fluffy",
+        d: "bent",
+        correct: "b",
+    },
+]
+
+// A function will be made to the Merriam-Webster dictionary api for data fetching. It will take one parameter - a word that will replace the query term on the api. When called, a word from the quizData array of objects will be passed into it (ie. quizData.solution), which will query the api and this will obtain the needed definition of each question (ie."feeling or showing sorrow or unhappiness"). These will then be rendered to the screen in the header of the page. 
+
+// A counter will be generated to keep track of the users correct answers / score. Another counter will be generated to keep track of their place in the quizData array, as the game will go through this sequentially. Both of these will start at zero (0)
+
+// A function will display all of the quizData array content (radio options a, b, c, or d) sequentially as they fall within the quizData array of objects using the innerText method. A variable will be used inside this function to keep track of where in the array of quiz questions the game is at. 
+
+// A function will be created to reset the radio checked state to unchecked
+
+// A function will be called to start the game. It will house inside it the functions for clearing the checked radio buttons and the function for displaying the content to the screen
+
+// A function will log what radio button the user has chosen and store its value
+
+// An event listener will be triggered when the submit button is clicked. When it is, it will first check to see if a radio has been chosen (using the above function). If it hasn't, nothing will be happen on click. If it has, it will check to see what choice it is. If the choice matches the correct answer that is located in the quizData array, it will add 1 point to the score counter. Then, it will check to see where the user is on their path. A conditional statement will check to see if they have finished all of the questions. If this has been met, then the condition will end with an else statment. This will takeover and display a final congratulations / total score count / the users name to the page using innerHTML and template literals, using the needed stored variables. 
