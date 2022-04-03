@@ -56,6 +56,15 @@ const quizData = [
 
 // A function will be made to the Merriam-Webster dictionary api for data fetching. It will take one parameter - a word that will replace the query term on the api. When called, a word from the quizData array of objects will be passed into it, which will query the api and this will obtain the needed definition of each question. These will then be rendered to the screen in the header of the page. 
 
+fetchDiction = (words) => {
+    fetch(`https://www.dictionaryapi.com/api/v3/references/sd2/json/${words}?key=${apiKEY}`)
+      .then((res) => res.json())
+      .then((resJson) => {
+        let definition = resJson[0].shortdef[0]
+        console.log(definition)
+        questionEl.innerText = definition
+      }); 
+}
 
 // A counter will be generated to keep track of the users correct answer score and their place in the quizData array. Both of thses will start at zero (0)
 
