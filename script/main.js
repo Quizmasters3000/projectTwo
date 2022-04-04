@@ -17,6 +17,21 @@ quizApp.quizCounter = 1;
 quizApp.scoreCounter = 0;
 quizApp.surpriseNumber;
 
+quizApp.nameElement = document.querySelector("input")
+quizApp.myName;
+
+quizApp.submitName.addEventListener('click', () => {
+    if (!quizApp.nameElement.value) {
+        alert("Please enter your name")
+    } else {
+      quizApp.myName = quizApp.nameElement.value
+      nameInput.classList.add("inactive");
+      quizApp.quizWrapper.classList.add("active");
+      quizApp.quizWrapper.classList.remove("inactive");
+    }
+})
+
+
 quizApp.getRandomNumber = function () {
     quizApp.surpriseNumber = Math.floor(Math.random() * 4);
     console.log(quizApp.surpriseNumber)
@@ -67,13 +82,12 @@ quizApp.getRandomWord = function () {
         }
       })
       .catch((error) => {
-        // Handle the error
-        console.log(error);
-        console.log('other')
-        quizApp.getRandomWord();
-      });
+          if (error) {
+            quizApp.getRandomWord();
+              } 
+                });
   };
-};
+  };
 
 
 
