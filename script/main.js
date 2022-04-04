@@ -157,5 +157,4 @@ quizApp.init = function() {
 }
 
 
-
 quizApp.init()
