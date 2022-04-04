@@ -1,5 +1,4 @@
-// const apiKEY = "8830677a-8030-4a96-a3db-4eeb5fa00be1";
-// https://www.dictionaryapi.com/api/v3/references/sd2/json/${randomWord}?key=${apiKEY}
+
 const apiKEY = "44173360-753a-4c6f-9557-6cb1310964a6";
 const submitName = document.querySelector(".submit");
 const nameInput = document.querySelector(".nameInput");
@@ -18,17 +17,14 @@ let nameElement = document.querySelector("input")
 let myName;
 
 submitName.addEventListener('click', () => {
-    nameInput.classList.add("inactive");
-    quizWrapper.classList.add("active");
-    quizWrapper.classList.remove("inactive");
     if (!nameElement.value) {
         alert("Please enter your name")
     } else {
         myName = nameElement.value
-        console.log(myName)
-        return myName;
+       nameInput.classList.add("inactive");
+      quizWrapper.classList.add("active");
+      quizWrapper.classList.remove("inactive");
     }
-
 })
 // submitName.addEventListener("click", () => {
     
