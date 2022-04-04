@@ -1,28 +1,30 @@
-const apiKEY = "44173360-753a-4c6f-9557-6cb1310964a6";
-const submitName = document.querySelector(".submit");
-const nameInput = document.querySelector(".nameInput");
-const quizWrapper = document.querySelector(".quizWrapper");
-const quiz = document.querySelector(".quizWrapper");
-const radioChoices = document.querySelectorAll(".choice");
-const radioA = document.getElementById("radioA");
-const radioB = document.getElementById("radioB");
-const radioC = document.getElementById("radioC");
-const radioD = document.getElementById("radioD");
-const submit = document.querySelector(".submitAnswer");
-const questionDefintion = document.querySelector(".questions");
+const quizApp = {}
 
-let quizCounter = 1;
-let scoreCounter = 0;
-let surpriseNumber;
+quizApp.apiKEY = "44173360-753a-4c6f-9557-6cb1310964a6";
+quizApp.submitName = document.querySelector(".submit");
+quizApp.nameInput = document.querySelector(".nameInput");
+quizApp.quizWrapper = document.querySelector(".quizWrapper");
+quizApp.radioChoices = document.querySelectorAll(".choice");
+quizApp.radioA = document.getElementById("radioA");
+quizApp.radioB = document.getElementById("radioB");
+quizApp.radioC = document.getElementById("radioC");
+quizApp.radioD = document.getElementById("radioD");
+quizApp.submit = document.querySelector(".submitAnswer");
+quizApp.questionDefintion = document.querySelector(".questions");
+quizApp.choices = document.querySelector(".choices")
+quizApp.liButtons = document.querySelectorAll(".liButton")
+quizApp.quizCounter = 1;
+quizApp.scoreCounter = 0;
+quizApp.surpriseNumber;
 
-function getRandomNumber() {
-    surpriseNumber = Math.floor(Math.random() * 4);
-    console.log(surpriseNumber)
-    return surpriseNumber
+quizApp.getRandomNumber = function () {
+    quizApp.surpriseNumber = Math.floor(Math.random() * 4);
+    console.log(quizApp.surpriseNumber)
+    return quizApp.surpriseNumber
 }
 
 
-getRandomWord = () => {
+quizApp.getRandomWord = function () {
   fetch(`https://random-word-api.herokuapp.com/word?number=4`)
     .then((res) => res.json())
     .then((resJson) => {
@@ -31,35 +33,32 @@ getRandomWord = () => {
       let wordC = resJson[2];
       let wordD = resJson[3];
 
-      radioA.innerText = wordA;
-      radioB.innerText = wordB;
-      radioC.innerText = wordC;
-      radioD.innerText = wordD;
+      quizApp.radioA.innerText = wordA;
+      quizApp.radioB.innerText = wordB;
+      quizApp.radioC.innerText = wordC;
+      quizApp.radioD.innerText = wordD;
 
 
-      getRandomNumber()
-
-      console.log(`${surpriseNumber} is the random num generated at the start`)
+      quizApp.getRandomNumber()
 
       let randomWords = resJson;
-
-      let randomWord = randomWords[surpriseNumber];
+      let randomWord = randomWords[quizApp.surpriseNumber];
       console.log(randomWord);
 
-      fetchDiction(randomWord);
+      quizApp.fetchDiction(randomWord);
       // buttonSubmit();
       //   selectedRadio(randomWord);
     });
-  fetchDiction = (randomWord) => {
+  quizApp.fetchDiction = (randomWord) => {
     fetch(
-      `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${randomWord}?key=${apiKEY}`
+      `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${randomWord}?key=${quizApp.apiKEY}`
     )
       .then((res) => res.json())
       .then((resJson) => {
         if (resJson[0].shortdef[0]) {
           let def = resJson[0].shortdef[0];
           let definition = def.charAt(0).toUpperCase() + def.slice(1)
-          questionDefintion.innerText = definition;
+          quizApp.questionDefintion.innerText = definition;
           console.log(resJson)
           
         } else {
@@ -71,56 +70,78 @@ getRandomWord = () => {
         // Handle the error
         console.log(error);
         console.log('other')
-        getRandomWord();
+        quizApp.getRandomWord();
       });
   };
 };
 
-(() => {
-  resetAll();
-})();
 
-function resetAll() {
-  getRandomWord(surpriseNumber);
-  uncheckRadio();
+
+quizApp.resetAll = function() {
+  quizApp.getRandomWord(quizApp.surpriseNumber);
+  quizApp.uncheckRadio();
 }
 
-function loadQuiz() {
-  uncheckRadio();
-  getRandomWord();
+quizApp.loadQuiz = function() {
+  quizApp.uncheckRadio();
+  quizApp.getRandomWord();
   // selectedRadio()
-  quizCounter++;
+  quizApp.quizCounter++;
+  // quizApp.choices.classList.toggle('rightSideAnimate')
+  // quizApp.choices.classList.toggle('leftSideAnimate')
+  // quizApp.liButtons.forEach(li => li.classList.remove('blueish'))
+
 }
 
-function uncheckRadio() {
-  radioChoices.forEach((choice) => (choice.checked = false));
+quizApp.uncheckRadio = function() {
+  quizApp.radioChoices.forEach((choice) => (choice.checked = false));
 }
 
-function selectedRadio(randomWord) {
+  quizApp.liButtons.forEach(li => {
+    li.addEventListener('click', () => {
+          // quizApp.liButtons.forEach(li => li.classList.remove('blueish'))
+          // quizApp.li.classList.add('blueish')     
+    })
+})
+
+
+quizApp.selectedRadio = function (randomWord) {
   let chosen;
-  radioChoices.forEach((choice) => {
+  quizApp.radioChoices.forEach((choice) => {
     if (choice.checked) {
       chosen = choice.id;
+      
     }
   });
   return chosen;
 }
-// function buttonSubmit() {
-  submit.addEventListener("click", () => {
-    let chosen = selectedRadio();
+
+quizApp.submit.addEventListener("click", () => {
+    let chosen = quizApp.selectedRadio();
     if (chosen) {
-      if (chosen == surpriseNumber) {
-        scoreCounter++;
+      if (chosen == quizApp.surpriseNumber) {
+        quizApp.scoreCounter++;
       }
       // quizCounter++;
-      if (quizCounter < 5) {
-        loadQuiz();
+      if (quizApp.quizCounter < 5) {
+        quizApp.loadQuiz();
       } else {
-        quiz.innerHTML = `
+        quizApp.quizWrapper.innerHTML = `
            <h2>Congrats!!! 
-           You got ${scoreCounter}/ 5 questions correctly</h2>
+           You got ${quizApp.scoreCounter}/ 5 questions correctly</h2>
            <button onclick="location.reload()">Reload</button>`;
       }
     }
-  });
-// }
+  })
+
+quizApp.init = function() {
+
+(() => {
+  quizApp.resetAll();
+})();
+
+}
+
+
+
+quizApp.init()

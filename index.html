@@ -9,30 +9,34 @@
   </head>
   <body>
     <h1>Dictionary Quiz</h1>
-
+    <div class="nameInput active">
+      <label for="name" class="sr-only">Welcome, please submit your name</label>
+      <input type="text" id="name" placeholder=" " />
+      <button type="submit" class="submit">Submit</button>
+    </div>
     <div class="quizWrapper">
-      <div class="quizContainer">
-        <h3 class="quizQuestion">Question Goes Here!</h3>
-        <ul class="choices">
-          <li>
-            <input type="radio" name="choice" class="choice" id="a" />
-            <label for="a" id="radioA">Answer goes here</label>
+      <div class="quizTitle">
+        <h3 class="questions">Question Goes Here!</h3>
+        <ul class="choices rightSideAnimate">
+          <li class="liButton" id="a">
+            <input type="radio" name="choice" class="choice" id="0" />
+            <label for="0" id="radioA">Answer goes here</label>
           </li>
-          <li>
-            <input type="radio" name="choice" class="choice" id="b" />
-            <label for="b" id="radioB">Answer goes here</label>
+          <li class="liButton" id="b">
+            <input type="radio" name="choice" class="choice" id="1" />
+            <label for="1" id="radioB">Answer goes here</label>
           </li>
-          <li>
-            <input type="radio" name="choice" class="choice" id="c" />
-            <label for="c" id="radioC">Answer goes here</label>
+          <li class="liButton" id="c">
+            <input type="radio" name="choice" class="choice" id="2" />
+            <label for="2" id="radioC">Answer goes here</label>
           </li>
-          <li>
-            <input type="radio" name="choice" class="choice" id="d" />
-            <label for="d" id="radioD">Answer goes here</label>
+          <li class="liButton" id="d">
+            <input type="radio" name="choice" class="choice" id="3" />
+            <label for="3" id="radioD">Answer goes here</label>
           </li>
         </ul>
       </div>
-      <button class="submit">SUBMIT ANSWER</button>
+      <button class="submitAnswer">SUBMIT ANSWER</button>
     </div>
     <script src="./script/main.js"></script>
   </body>
