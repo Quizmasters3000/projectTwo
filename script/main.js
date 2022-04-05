@@ -25,7 +25,7 @@ quizApp.submitName.addEventListener('click', () => {
         alert("Please enter your name")
     } else {
       quizApp.myName = quizApp.nameElement.value
-      nameInput.classList.add("inactive");
+      quizApp.nameInput.classList.add("inactive");
       quizApp.quizWrapper.classList.add("active");
       quizApp.quizWrapper.classList.remove("inactive");
     }
@@ -111,12 +111,13 @@ quizApp.uncheckRadio = function() {
   quizApp.radioChoices.forEach((choice) => (choice.checked = false));
 }
 
-  quizApp.liButtons.forEach(li => {
-    li.addEventListener('click', () => {
-          // quizApp.liButtons.forEach(li => li.classList.remove('blueish'))
-          // quizApp.li.classList.add('blueish')     
-    })
-})
+//   quizApp.liButtons.forEach(li => {
+//     li.addEventListener('click', () => {
+//           console.log('click')
+//           quizApp.liButtons.forEach(li => li.classList.remove('blueish'))
+//           li.classList.add('blueish')     
+//     })
+// })
 
 
 quizApp.selectedRadio = function (randomWord) {
@@ -131,6 +132,7 @@ quizApp.selectedRadio = function (randomWord) {
 }
 
 quizApp.submit.addEventListener("click", () => {
+  console.log('submit')
     let chosen = quizApp.selectedRadio();
     if (chosen) {
       if (chosen == quizApp.surpriseNumber) {
@@ -155,7 +157,6 @@ quizApp.init = function() {
 })();
 
 }
-
 
 
 quizApp.init()
