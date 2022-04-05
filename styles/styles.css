@@ -259,3 +259,170 @@ html {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+body {
+  background-color: burlywood;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.quizWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: turquoise;
+}
+
+@-webkit-keyframes leftSideAnimate {
+  0% {
+    background-color: burlywood;
+  }
+  50% {
+    background-color: blue;
+    -webkit-transform: translateX(600px);
+            transform: translateX(600px);
+  }
+  100% {
+    background-color: burlywood;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes leftSideAnimate {
+  0% {
+    background-color: burlywood;
+  }
+  50% {
+    background-color: blue;
+    -webkit-transform: translateX(600px);
+            transform: translateX(600px);
+  }
+  100% {
+    background-color: burlywood;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+@-webkit-keyframes rightSideAnimate {
+  0% {
+    background-color: burlywood;
+  }
+  50% {
+    background-color: palevioletred;
+    -webkit-transform: translateX(-600px);
+            transform: translateX(-600px);
+  }
+  100% {
+    background-color: burlywood;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+@keyframes rightSideAnimate {
+  0% {
+    background-color: burlywood;
+  }
+  50% {
+    background-color: palevioletred;
+    -webkit-transform: translateX(-600px);
+            transform: translateX(-600px);
+  }
+  100% {
+    background-color: burlywood;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+.leftSideAnimate {
+  -webkit-animation-name: leftSideAnimate;
+          animation-name: leftSideAnimate;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+}
+
+.rightSideAnimate {
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-name: rightSideAnimate;
+          animation-name: rightSideAnimate;
+}
+
+.choices {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all 5s ease-in-out;
+  transition: all 5s ease-in-out;
+  padding: 0;
+}
+.choices .liButton {
+  padding: 40px;
+  position: relative;
+  text-align: center;
+  background-color: none;
+  border-radius: 10px;
+  border: 1px solid black;
+  margin: 20px 0;
+  cursor: pointer;
+}
+.choices .liButton label {
+  padding: 10px;
+  height: 10px;
+  cursor: pointer;
+}
+.choices .liButton input[type=radio] {
+  position: absolute;
+  display: none;
+}
+
+.blueish {
+  background-color: gold;
+  color: purple;
+}
+
+.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.inactive {
+  display: none;
+}
