@@ -16,6 +16,8 @@ let scoreCounter = 0;
 let nameElement = document.querySelector("input")
 let myName;
 
+
+
 submitName.addEventListener('click', () => {
     if (!nameElement.value) {
         alert("Please enter your name")
