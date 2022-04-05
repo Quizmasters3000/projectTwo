@@ -426,3 +426,8 @@ body {
 .inactive {
   display: none;
 }
+
+.submitAnswer {
+  padding: 30px;
+  margin-bottom: 30px;
+}

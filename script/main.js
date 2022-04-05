@@ -111,13 +111,13 @@ quizApp.uncheckRadio = function() {
   quizApp.radioChoices.forEach((choice) => (choice.checked = false));
 }
 
-  quizApp.liButtons.forEach(li => {
-    li.addEventListener('click', () => {
-          console.log('click')
-          quizApp.liButtons.forEach(li => li.classList.remove('blueish'))
-          li.classList.add('blueish')     
-    })
-})
+//   quizApp.liButtons.forEach(li => {
+//     li.addEventListener('click', () => {
+//           console.log('click')
+//           quizApp.liButtons.forEach(li => li.classList.remove('blueish'))
+//           li.classList.add('blueish')     
+//     })
+// })
 
 
 quizApp.selectedRadio = function (randomWord) {
@@ -132,6 +132,7 @@ quizApp.selectedRadio = function (randomWord) {
 }
 
 quizApp.submit.addEventListener("click", () => {
+  console.log('submit')
     let chosen = quizApp.selectedRadio();
     if (chosen) {
       if (chosen == quizApp.surpriseNumber) {
