@@ -174,6 +174,7 @@ quizApp.displayImage = function () {
   quizApp.image = document.createElement("img");
    quizApp.image.src= `${quizApp.imageSources[quizApp.randomImage]}`
   quizApp.imageArea.appendChild(quizApp.image)
+  document.querySelector(".imgContainer").innerHTML = " ";
   document.querySelector(".imgContainer").appendChild(quizApp.imageArea);
 }
 
