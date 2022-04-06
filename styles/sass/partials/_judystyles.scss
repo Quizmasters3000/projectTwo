@@ -1,0 +1,95 @@
+.active {
+  display: flex;
+  flex-direction: column;
+}
+.inactive {
+  display: none;
+}
+body {
+  // background-color: #d88771;
+  background: linear-gradient(100deg, #2879f2, #976ef7eb);
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.imgContainer{
+  width: 100%;
+  position: relative;
+}
+img {
+  width: 20%;
+  position: absolute;
+ left: 30em;
+ top: -1em;
+}
+.nameInput {
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  padding: 10em 7em;
+  border-radius: 1.2em;
+}
+input[type="text"] {
+  margin-top: 1em;
+  width: 100%;
+  height: 2em;
+  border-radius: 0.3em;
+  font-size: 1.3em;
+  border: 1px solid #d88771;
+}
+
+.submit,
+.submitAnswer {
+  margin-top: 1em;
+  background-color: rgb(246, 208, 180);
+  color: black;
+  border-radius: 0.2em;
+  padding: 0.7em 2em;
+  border: none;
+  font-size: 1.3em;
+  margin-top: 1em;
+}
+
+.quizTitle {
+  display: flex;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  padding: 10em 7em;
+  border-radius: 1.2em;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  max-width: 500px;
+  height: 700px;
+  max-height: 800px;
+  .choices {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0; 
+  }
+  h3 {
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  .liButton {
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    list-style: none;
+    border: 1px solid #d88771;
+    border-radius: 0.2em;
+    padding: 1em;
+    margin: .5em auto 0;
+  }
+  input[type="radio"] {
+    display: none;
+    position: absolute;
+  }
+}
