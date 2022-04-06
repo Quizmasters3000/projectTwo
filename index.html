@@ -6,41 +6,44 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Test Dictionary</title>
-<link rel="stylesheet" href="./styles/styles.css"></head>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="./styles/styles.css" />
+</head>
 <body>
   <!-- <h1>Test Dictionary Quiz</h1> -->
+
   <div class="nameInput active">
     <h2>Welcome to the Quiz</h2>
-    <label for="name" class="">please submit your name</label>
+    <label for="name" class="">Please submit your name</label>
     <input type="text" id="name" class="name" placeholder="name">
     <button type="submit" class="submit">Submit</button>
   </div>
-
+  <div class="imgContainer">
+    <img src="" alt="">
+  </div>
   <div class="quizWrapper inactive">
     <div class="quizTitle">
       <h3 class="questions">Question Goes Here!</h3>
       <ul class="choices">
-        <li>
+        <li class="liButton">
           <input type="radio" name="choice" class="choice" id="0" />
-          <label for="0" id="radioA">Answer goes here</label>
+          <label for="0" class="radioStyle" id="radioA">Answer goes here</label>
         </li>
-        <li>
+        <li class="liButton">
           <input type="radio" name="choice" class="choice" id="1" />
-          <label for="1" id="radioB">Answer goes here</label>
+          <label for="1" class="radioStyle" id="radioB">Answer goes here</label>
         </li>
-        <li>
+        <li class="liButton">
           <input type="radio" name="choice" class="choice" id="2" />
-          <label for="2" id="radioC">Answer goes here</label>
+          <label for="2" class="radioStyle" id="radioC">Answer goes here</label>
         </li>
-        <li>
+        <li class="liButton">
           <input type="radio" name="choice" class="choice" id="3" />
-          <label for="3" id="radioD">Answer goes here</label>
+          <label for="3" class="radioStyle" id="radioD">Answer goes here</label>
         </li>
       </ul>
+      <button class="submitAnswer">SUBMIT ANSWER</button>
     </div>
-    <button class="submitAnswer">SUBMIT ANSWER</button>
+
   </div>
   <script src="./script/main.js"></script>
 </body>

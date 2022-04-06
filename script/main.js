@@ -1,135 +1,187 @@
+const quizApp = {}
 
-const apiKEY = "44173360-753a-4c6f-9557-6cb1310964a6";
-const submitName = document.querySelector(".submit");
-const nameInput = document.querySelector(".nameInput");
-const quizWrapper = document.querySelector(".quizWrapper");
-const quiz = document.querySelector(".quizWrapper");
-const radioChoices = document.querySelectorAll(".choice");
-const radioA = document.getElementById("radioA");
-const radioB = document.getElementById("radioB");
-const radioC = document.getElementById("radioC");
-const radioD = document.getElementById("radioD");
-const submit = document.querySelector(".submitAnswer");
-const questionDefintion = document.querySelector(".questions");
-let quizCounter = 1;
-let scoreCounter = 0;
-let nameElement = document.querySelector("input")
-let myName;
+quizApp.apiKEY = "44173360-753a-4c6f-9557-6cb1310964a6";
+quizApp.submitName = document.querySelector(".submit");
+quizApp.nameInput = document.querySelector(".nameInput");
+quizApp.quizWrapper = document.querySelector(".quizWrapper");
+quizApp.quizTitle = document.querySelector(".quizTitle");
+quizApp.radioChoices = document.querySelectorAll(".choice");
+quizApp.radioA = document.getElementById("radioA");
+quizApp.radioB = document.getElementById("radioB");
+quizApp.radioC = document.getElementById("radioC");
+quizApp.radioD = document.getElementById("radioD");
+quizApp.submit = document.querySelector(".submitAnswer");
+quizApp.questionDefintion = document.querySelector(".questions");
+quizApp.choices = document.querySelector(".choices")
+quizApp.liButtons = document.querySelectorAll(".liButton")
+quizApp.quizCounter = 1;
+quizApp.scoreCounter = 0;
+quizApp.surpriseNumber; 
+quizApp.gradient = 45;
+quizApp.nameElement = document.querySelector("input")
+quizApp.myName;
+quizApp.imageSources = ["./assets/1.png", "./assets/2.png", "./assets/3.png", "./assets/4.png", "./assets/5.png", "./assets/6.png"]
 
 
-
-submitName.addEventListener('click', () => {
-    if (!nameElement.value) {
+quizApp.submitName.addEventListener('click', () => {
+    if (!quizApp.nameElement.value) {
         alert("Please enter your name")
     } else {
-        myName = nameElement.value
-       nameInput.classList.add("inactive");
-      quizWrapper.classList.add("active");
-      quizWrapper.classList.remove("inactive");
-    }
+      quizApp.myName = quizApp.nameElement.value
+      quizApp.nameInput.classList.add("inactive");
+      quizApp.quizWrapper.classList.remove("inactive");
+      quizApp.quizWrapper.classList.add("active");
+       quizApp.getrandomImage();
+ quizApp.displayImage();
+        }
 })
-// submitName.addEventListener("click", () => {
-    
-//   //   if (myName){
-//   //       console.log(myName);
-//   //   } else {
-//   //   alert("Please put in your name!")
-//   // }
-// });
-getRandomWord = () => {
+
+quizApp.changeColor = function () {
+ quizApp.gradient += 100;
+ document.querySelector("body").style.background = `linear-gradient(${quizApp.gradient}deg, #2879f2, #976ef7eb)`;
+console.log(quizApp.gradient)
+}
+
+quizApp.getRandomNumber = function () {
+    quizApp.surpriseNumber = Math.floor(Math.random() * 4);
+    console.log(quizApp.surpriseNumber)
+    return quizApp.surpriseNumber
+}
+
+quizApp.getRandomWord = function () {
   fetch(`https://random-word-api.herokuapp.com/word?number=4`)
     .then((res) => res.json())
     .then((resJson) => {
-      // displayWords(resJson)
+      console.log("random word", resJson)
       let wordA = resJson[0];
       let wordB = resJson[1];
       let wordC = resJson[2];
       let wordD = resJson[3];
-      radioA.innerText = wordA;
-      radioB.innerText = wordB;
-      radioC.innerText = wordC;
-      radioD.innerText = wordD;
-      let surpriseNumber = Math.floor(Math.random() * 4);
+
+      quizApp.radioA.innerText = wordA;
+      quizApp.radioB.innerText = wordB;
+      quizApp.radioC.innerText = wordC;
+      quizApp.radioD.innerText = wordD;
+
+
+      quizApp.getRandomNumber()
+
       let randomWords = resJson;
-      let randomWord = randomWords[surpriseNumber];
+      let randomWord = randomWords[quizApp.surpriseNumber];
       console.log(randomWord);
-      fetchDiction(randomWord);
-      buttonSubmit(surpriseNumber);
+
+      quizApp.fetchDiction(randomWord);
+      // buttonSubmit();
       //   selectedRadio(randomWord);
     });
-   fetchDiction = (randomWord) => {
+  quizApp.fetchDiction = (randomWord) => {
     fetch(
-      `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${randomWord}?key=${apiKEY}`
+      `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${randomWord}?key=${quizApp.apiKEY}`
     )
-        .then((res) => {
-          if (res.ok) {
-          return res.json();
-        } else {
-          throw new Error("Oh no! This call wasn't successful");
-            }
-          })
-        .then((jsonData) => {
-          let def = jsonData[0].shortdef[0];
+      .then((res) => res.json())
+      .then((resJson) => {
+        if (resJson[0].shortdef[0]) {
+          let def = resJson[0].shortdef[0];
           let definition = def.charAt(0).toUpperCase() + def.slice(1)
-            questionDefintion.innerText = definition;
-            //   console.log(definition);
-          console.log(jsonData);
-         })
-        .catch((error) => {
+          quizApp.questionDefintion.innerText = definition;
+          console.log(resJson)
+          
+        } else {
+          console.log(resJson)
+          throw Error("help")
+        }
+      })
+      .catch((error) => {
           if (error) {
-            getRandomWord();
+            quizApp.getRandomWord();
               } 
                 });
   };
   };
 
-(() => {
-  resetAll();
-})();
+quizApp.resetAll = function() {
+  quizApp.getRandomWord(quizApp.surpriseNumber);
+  quizApp.uncheckRadio();
+}
 
-function resetAll() {
-  getRandomWord();
-  uncheckRadio();
+
+quizApp.loadQuiz = function() {
+  quizApp.uncheckRadio();
+  quizApp.getRandomWord();
+    // selectedRadio()
+  quizApp.quizCounter++;
+  // quizApp.choices.classList.toggle('rightSideAnimate')
+  // quizApp.choices.classList.toggle('leftSideAnimate')
+  // quizApp.liButtons.forEach(li => li.classList.remove('blueish'))
+
 }
-function loadQuiz() {
-  uncheckRadio();
-  getRandomWord();
-  selectedRadio()
-  quizCounter++;
+
+quizApp.uncheckRadio = function() {
+  quizApp.radioChoices.forEach((choice) => (choice.checked = false));
 }
-function uncheckRadio() {
-  radioChoices.forEach((choice) => (choice.checked = false));
-}
-function selectedRadio(randomWord) {
+
+//   quizApp.liButtons.forEach(li => {
+//     li.addEventListener('click', () => {
+//           console.log('click')
+//           quizApp.liButtons.forEach(li => li.classList.remove('blueish'))
+//           li.classList.add('blueish')     
+//     })
+// })
+
+
+quizApp.selectedRadio = function (randomWord) {
   let chosen;
-  radioChoices.forEach((choice) => {
+  quizApp.radioChoices.forEach((choice) => {
     if (choice.checked) {
       chosen = choice.id;
+      
     }
   });
   return chosen;
 }
-function buttonSubmit(surpriseNumber) {
-  submit.addEventListener("click", () => {
-    let chosen = selectedRadio();
-    // chosen = Number(chosen)
+
+quizApp.submit.addEventListener("click", () => {
+  console.log('submit')
+  quizApp.getrandomImage();
+ quizApp.displayImage();
+  quizApp.changeColor();
+    let chosen = quizApp.selectedRadio();
     if (chosen) {
-      console.log(chosen)
-      console.log(surpriseNumber)
-      if (chosen == surpriseNumber) {
-        scoreCounter++;
-        console.log(`${scoreCounter} is your new score`);
+      if (chosen == quizApp.surpriseNumber) {
+        quizApp.scoreCounter++;
       }
-      // quizCounter++
-      // getRandomWord();
-      if (quizCounter < 5) {
-        loadQuiz();
+      // quizCounter++;
+      if (quizApp.quizCounter < 5) {
+        quizApp.loadQuiz();
+    
       } else {
-        quiz.innerHTML = `
-           <h2>Congrats!!! ${myName}
-           you got ${scoreCounter}/ 5 questions correctly</h2>
-           <button onclick="location.reload()">Reload</button>`;
+        quizApp.quizTitle.innerHTML = `
+           <h2>Congrats!!! 
+           You got ${quizApp.scoreCounter}/ 5 questions correctly</h2>
+           <button class="submit" onclick="location.reload()">Reload</button>`;
       }
     }
-  });
+  })
+
+quizApp.getrandomImage = function () {
+ quizApp.randomImage = Math.floor(Math.random() * quizApp.imageSources.length);
+ console.log(quizApp.randomImage, quizApp.imageSources[quizApp.randomImage]);
+ return quizApp.imageSources[quizApp.randomImage]
+};
+
+quizApp.displayImage = function () {
+  quizApp.imageArea = document.createElement("div")
+  quizApp.image = document.createElement("img");
+   quizApp.image.src= `${quizApp.imageSources[quizApp.randomImage]}`
+  quizApp.imageArea.appendChild(quizApp.image)
+  document.querySelector(".imgContainer").appendChild(quizApp.imageArea);
 }
+
+quizApp.init = function() {
+  (() => {
+  quizApp.resetAll();
+})();
+}
+
+
+quizApp.init()
