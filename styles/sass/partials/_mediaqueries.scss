@@ -23,15 +23,14 @@
   }
 }
 @media (max-width: 500px) {
-  .submit,
+  
   .submitAnswer {
+    width: 40%;
+  }
+
+  .submit {
     background-color: rgb(246, 208, 180);
     border-radius: 0.2em;
-    padding: 0.7em 2em;
-    border: none;
-    font-size: 1em;
-    margin-top: 1em;
-    padding: 0.4em;
   }
   .quizTitle {
     width: 350px;
@@ -58,17 +57,34 @@
   .quizTitle {
     width: 300px;
     max-width: 300px;
-    height: 400px;
-    max-height: 400px;
-    .choice {
-    }
+    
     h3 {
-      font-size: 1em;
-      width: 200px;
+      font-size: 0.9em;
+      // width: 200px;
     }
     .liButton {
-      min-width: 250px;
-      padding: 0.3em;
+      padding: 0;
+
+      label {
+        padding: 0.5em;
+              font-size: 0.85em;
+      }
+    }
+  }
+
+
+  .status {
+    width: 50px;
+    height: 10px;
+    border: 1px solid #d88771;
+    border-radius: 5px;
+    align-self: flex-end;
+  
+    .statusBar {
+      width: 0%;
+      height: 100%;
+      border-radius: 5px;
+      background-color: aquamarine;
     }
   }
 }
