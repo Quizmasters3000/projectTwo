@@ -294,15 +294,20 @@ body {
 }
 
 .imgContainer {
-  width: 100%;
-  position: relative;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[5];
+      grid-template-columns: repeat(5, 1fr);
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 1;
+  grid-column: 4/5;
 }
 
 img {
-  width: 10%;
-  position: absolute;
-  top: -1em;
-  left: 65em;
+  width: 100%;
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 1;
+  grid-column: 4/5;
 }
 
 .nameInput {
