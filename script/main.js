@@ -4,6 +4,7 @@ quizApp.apiKEY = "44173360-753a-4c6f-9557-6cb1310964a6";
 quizApp.submitName = document.querySelector(".submit");
 quizApp.nameInput = document.querySelector(".nameInput");
 quizApp.quizWrapper = document.querySelector(".quizWrapper");
+quizApp.quizTitle = document.querySelector(".quizTitle");
 quizApp.radioChoices = document.querySelectorAll(".choice");
 quizApp.radioA = document.getElementById("radioA");
 quizApp.radioB = document.getElementById("radioB");
@@ -15,22 +16,31 @@ quizApp.choices = document.querySelector(".choices")
 quizApp.liButtons = document.querySelectorAll(".liButton")
 quizApp.quizCounter = 1;
 quizApp.scoreCounter = 0;
-quizApp.surpriseNumber;
-
+quizApp.surpriseNumber; 
+quizApp.gradient = 45;
 quizApp.nameElement = document.querySelector("input")
 quizApp.myName;
+quizApp.imageSources = ["./assets/1.png", "./assets/2.png", "./assets/3.png", "./assets/4.png", "./assets/5.png", "./assets/6.png"]
+
 
 quizApp.submitName.addEventListener('click', () => {
     if (!quizApp.nameElement.value) {
         alert("Please enter your name")
     } else {
       quizApp.myName = quizApp.nameElement.value
-      nameInput.classList.add("inactive");
-      quizApp.quizWrapper.classList.add("active");
+      quizApp.nameInput.classList.add("inactive");
       quizApp.quizWrapper.classList.remove("inactive");
-    }
+      quizApp.quizWrapper.classList.add("active");
+       quizApp.getrandomImage();
+ quizApp.displayImage();
+        }
 })
 
+quizApp.changeColor = function () {
+ quizApp.gradient += 100;
+ document.querySelector("body").style.background = `linear-gradient(${quizApp.gradient}deg, #2879f2, #976ef7eb)`;
+console.log(quizApp.gradient)
+}
 
 quizApp.getRandomNumber = function () {
     quizApp.surpriseNumber = Math.floor(Math.random() * 4);
@@ -38,11 +48,11 @@ quizApp.getRandomNumber = function () {
     return quizApp.surpriseNumber
 }
 
-
 quizApp.getRandomWord = function () {
   fetch(`https://random-word-api.herokuapp.com/word?number=4`)
     .then((res) => res.json())
     .then((resJson) => {
+      console.log("random word", resJson)
       let wordA = resJson[0];
       let wordB = resJson[1];
       let wordC = resJson[2];
@@ -89,17 +99,16 @@ quizApp.getRandomWord = function () {
   };
   };
 
-
-
 quizApp.resetAll = function() {
   quizApp.getRandomWord(quizApp.surpriseNumber);
   quizApp.uncheckRadio();
 }
 
+
 quizApp.loadQuiz = function() {
   quizApp.uncheckRadio();
   quizApp.getRandomWord();
-  // selectedRadio()
+    // selectedRadio()
   quizApp.quizCounter++;
   // quizApp.choices.classList.toggle('rightSideAnimate')
   // quizApp.choices.classList.toggle('leftSideAnimate')
@@ -111,12 +120,13 @@ quizApp.uncheckRadio = function() {
   quizApp.radioChoices.forEach((choice) => (choice.checked = false));
 }
 
-  quizApp.liButtons.forEach(li => {
-    li.addEventListener('click', () => {
-          // quizApp.liButtons.forEach(li => li.classList.remove('blueish'))
-          // quizApp.li.classList.add('blueish')     
-    })
-})
+//   quizApp.liButtons.forEach(li => {
+//     li.addEventListener('click', () => {
+//           console.log('click')
+//           quizApp.liButtons.forEach(li => li.classList.remove('blueish'))
+//           li.classList.add('blueish')     
+//     })
+// })
 
 
 quizApp.selectedRadio = function (randomWord) {
@@ -131,6 +141,10 @@ quizApp.selectedRadio = function (randomWord) {
 }
 
 quizApp.submit.addEventListener("click", () => {
+  console.log('submit')
+  quizApp.getrandomImage();
+ quizApp.displayImage();
+  quizApp.changeColor();
     let chosen = quizApp.selectedRadio();
     if (chosen) {
       if (chosen == quizApp.surpriseNumber) {
@@ -139,23 +153,36 @@ quizApp.submit.addEventListener("click", () => {
       // quizCounter++;
       if (quizApp.quizCounter < 5) {
         quizApp.loadQuiz();
+    
       } else {
-        quizApp.quizWrapper.innerHTML = `
+        quizApp.quizTitle.innerHTML = `
            <h2>Congrats!!! 
            You got ${quizApp.scoreCounter}/ 5 questions correctly</h2>
-           <button onclick="location.reload()">Reload</button>`;
+           <button class="submit" onclick="location.reload()">Reload</button>`;
       }
     }
   })
 
-quizApp.init = function() {
+quizApp.getrandomImage = function () {
+ quizApp.randomImage = Math.floor(Math.random() * quizApp.imageSources.length);
+ console.log(quizApp.randomImage, quizApp.imageSources[quizApp.randomImage]);
+ return quizApp.imageSources[quizApp.randomImage]
+};
 
-(() => {
-  quizApp.resetAll();
-})();
-
+quizApp.displayImage = function () {
+  quizApp.imageArea = document.createElement("div")
+  quizApp.image = document.createElement("img");
+   quizApp.image.src= `${quizApp.imageSources[quizApp.randomImage]}`
+  quizApp.imageArea.appendChild(quizApp.image)
+  document.querySelector(".imgContainer").innerHTML = " ";
+  document.querySelector(".imgContainer").appendChild(quizApp.imageArea);
 }
 
+quizApp.init = function() {
+  (() => {
+  quizApp.resetAll();
+})();
+}
 
 
 quizApp.init()
