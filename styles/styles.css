@@ -404,11 +404,14 @@ input[type=text] {
   border-radius: 0.3em;
   position: relative;
 }
-.liButton:hover {
+.liButton:hover, .liButton:focus {
   background-color: lightskyblue;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   border: lightskyblue 1px solid;
+}
+.liButton:active {
+  background-color: rgb(97, 190, 247);
 }
 .liButton input[type=radio] {
   display: none;
@@ -433,19 +436,23 @@ input[type=text] {
   margin-left: 1rem;
   display: inline-block;
 }
-.liButton .one {
+
+.one {
   -webkit-animation-delay: 250ms;
           animation-delay: 250ms;
 }
-.liButton .two {
+
+.two {
   -webkit-animation-delay: 400ms;
           animation-delay: 400ms;
 }
-.liButton .three {
+
+.three {
   -webkit-animation-delay: 100ms;
           animation-delay: 100ms;
 }
-.liButton .four {
+
+.four {
   -webkit-animation-delay: 700ms;
           animation-delay: 700ms;
 }
@@ -502,11 +509,11 @@ input[type=text] {
   border: none;
   font-size: 1.3em;
   margin-top: 1em;
+  cursor: pointer;
 }
 
 .submitAnswer {
   background-color: rgb(246, 208, 180);
-  color: black;
   border-radius: 0.2em;
   padding: 0.7em 2em;
   border: none;
@@ -523,12 +530,102 @@ input[type=text] {
 .animateInto {
   -webkit-animation-name: animateInto;
           animation-name: animateInto;
-  -webkit-animation-duration: 8s;
-          animation-duration: 8s;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
   -webkit-animation-delay: none;
           animation-delay: none;
 }
 
 .clicked {
   background-color: lightskyblue;
+}
+
+@media (max-width: 650px) {
+  .submitAnswer {
+    margin-top: 0.5em;
+    padding: 1em 2em;
+    border: none;
+    width: 200px;
+    font-size: 0.9em;
+  }
+
+  .quizTitle {
+    width: 400px;
+    max-width: 400px;
+    height: 600px;
+    max-height: 600px;
+  }
+  .quizTitle h3 {
+    font-size: 1.5em;
+    width: 300px;
+  }
+  .quizTitle .liButton {
+    font-size: 1em;
+  }
+}
+@media (max-width: 500px) {
+  .submitAnswer {
+    width: 40%;
+  }
+
+  .submit {
+    background-color: rgb(246, 208, 180);
+    border-radius: 0.2em;
+  }
+
+  .quizTitle {
+    width: 350px;
+    max-width: 350px;
+    height: 600px;
+    max-height: 600px;
+  }
+
+  h3 {
+    font-size: 1em;
+    width: 200px;
+  }
+
+  .liButton {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border: 1px solid #d88771;
+    padding: 1em 0;
+    margin: 0.5em auto 0;
+    font-size: 1em;
+  }
+}
+@media (max-width: 390px) {
+  .quizTitle {
+    width: 300px;
+    max-width: 300px;
+  }
+  .quizTitle h3 {
+    font-size: 0.9em;
+  }
+  .quizTitle .liButton {
+    padding: 0;
+  }
+  .quizTitle .liButton label {
+    padding: 0.5em;
+    font-size: 0.85em;
+  }
+
+  .status {
+    width: 50px;
+    height: 10px;
+    border: 1px solid #d88771;
+    border-radius: 5px;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+  }
+  .status .statusBar {
+    width: 0%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: aquamarine;
+  }
 }
