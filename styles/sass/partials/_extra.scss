@@ -1,0 +1,14 @@
+.status {
+    width: 90px;
+    height: 15px;
+    border: 1px solid #d88771;
+    border-radius: 5px;
+    align-self: flex-end;
+
+    .statusBar {
+        width: 0%;
+        height: 100%;
+        border-radius: 5px;
+        background-color: aquamarine;
+    }
+}

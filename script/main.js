@@ -18,8 +18,10 @@ quizApp.quizCounter = 1;
 quizApp.scoreCounter = 0;
 quizApp.surpriseNumber; 
 quizApp.gradient = 45;
+quizApp.radioLabels = document.querySelectorAll('.radioLabel');
 quizApp.nameElement = document.querySelector("input")
 quizApp.myName;
+quizApp.gameLength = 5;
 quizApp.imageSources = ["./assets/1.png", "./assets/2.png", "./assets/3.png", "./assets/4.png", "./assets/5.png", "./assets/6.png"]
 
 
@@ -58,10 +60,10 @@ quizApp.getRandomWord = function () {
       let wordC = resJson[2];
       let wordD = resJson[3];
 
-      quizApp.radioA.innerText = wordA;
-      quizApp.radioB.innerText = wordB;
-      quizApp.radioC.innerText = wordC;
-      quizApp.radioD.innerText = wordD;
+      document.getElementById('spanA').innerText = wordA;
+      document.getElementById('spanB').innerText = wordB;
+      document.getElementById('spanC').innerText = wordC;
+      document.getElementById('spanD').innerText = wordD;
 
 
       quizApp.getRandomNumber()
@@ -104,30 +106,34 @@ quizApp.resetAll = function() {
   quizApp.uncheckRadio();
 }
 
-
 quizApp.loadQuiz = function() {
   quizApp.uncheckRadio();
   quizApp.getRandomWord();
     // selectedRadio()
   quizApp.quizCounter++;
-  // quizApp.choices.classList.toggle('rightSideAnimate')
-  // quizApp.choices.classList.toggle('leftSideAnimate')
-  // quizApp.liButtons.forEach(li => li.classList.remove('blueish'))
-
+  quizApp.liButtons.forEach(li => li.classList.remove('clicked'))
 }
 
 quizApp.uncheckRadio = function() {
   quizApp.radioChoices.forEach((choice) => (choice.checked = false));
 }
 
-//   quizApp.liButtons.forEach(li => {
-//     li.addEventListener('click', () => {
-//           console.log('click')
-//           quizApp.liButtons.forEach(li => li.classList.remove('blueish'))
-//           li.classList.add('blueish')     
-//     })
-// })
 
+quizApp.liButtons.forEach(li => {
+    li.addEventListener('click', () => {
+        // console.log('heeeey')
+        quizApp.liButtons.forEach(li => li.classList.remove('clicked'))
+        li.classList.add('clicked');
+    })
+})
+
+quizApp.statusCounter = 0
+quizApp.setStatusBar = function() {
+    quizApp.statusCounter++
+    let percentage = ((quizApp.statusCounter / quizApp.gameLength) * 100);
+    console.log(percentage)
+    document.querySelector('.statusBar').style.width = `${percentage}%`;
+}
 
 quizApp.selectedRadio = function (randomWord) {
   let chosen;
@@ -141,23 +147,22 @@ quizApp.selectedRadio = function (randomWord) {
 }
 
 quizApp.submit.addEventListener("click", () => {
-  console.log('submit')
-  quizApp.getrandomImage();
- quizApp.displayImage();
-  quizApp.changeColor();
+quizApp.getrandomImage();
+quizApp.displayImage();
+quizApp.changeColor();
     let chosen = quizApp.selectedRadio();
     if (chosen) {
       if (chosen == quizApp.surpriseNumber) {
         quizApp.scoreCounter++;
       }
       // quizCounter++;
-      if (quizApp.quizCounter < 5) {
+      if (quizApp.quizCounter < quizApp.gameLength) {
         quizApp.loadQuiz();
-    
+        quizApp.setStatusBar();
       } else {
         quizApp.quizTitle.innerHTML = `
            <h2>Congrats!!! 
-           You got ${quizApp.scoreCounter}/ 5 questions correctly</h2>
+           You got ${quizApp.scoreCounter}/ ${quizApp.gameLength} questions correctly</h2>
            <button class="submit" onclick="location.reload()">Reload</button>`;
       }
     }
@@ -172,10 +177,10 @@ quizApp.getrandomImage = function () {
 quizApp.displayImage = function () {
   quizApp.imageArea = document.createElement("div")
   quizApp.image = document.createElement("img");
-   quizApp.image.src= `${quizApp.imageSources[quizApp.randomImage]}`
+  quizApp.image.src= `${quizApp.imageSources[quizApp.randomImage]}`
   quizApp.imageArea.appendChild(quizApp.image)
-  document.querySelector(".imgContainer").innerHTML = " ";
-  document.querySelector(".imgContainer").appendChild(quizApp.imageArea);
+  // document.querySelector(".imgContainer").innerHTML = " ";
+  // document.querySelector(".imgContainer").appendChild(quizApp.imageArea);
 }
 
 quizApp.init = function() {
