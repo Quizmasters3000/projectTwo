@@ -4,7 +4,7 @@ quizApp.apiKEY = "44173360-753a-4c6f-9557-6cb1310964a6";
 quizApp.submitName = document.querySelector(".submit");
 quizApp.nameInput = document.querySelector(".nameInput");
 quizApp.quizWrapper = document.querySelector(".quizWrapper");
-quizApp.quizTitle = document.querySelector(".quizTitle");
+quizApp.quizCard = document.querySelector(".quizCard");
 quizApp.radioChoices = document.querySelectorAll(".choice");
 quizApp.radioA = document.getElementById("radioA");
 quizApp.radioB = document.getElementById("radioB");
@@ -118,11 +118,20 @@ quizApp.loadQuiz = function () {
   quizApp.uncheckRadio();
   quizApp.getRandomWord();
   // selectedRadio()
-  quizApp.quizCounter++;
-  quizApp.liButtons.forEach((li) => li.classList.remove("clicked"));
+
+
   quizApp.liButtons.forEach(li => {
-        li.classList.toggle('animateInto')
-    })
+      li.classList.add('animateInto')
+  })
+  
+  quizApp.quizCounter++;
+
+  quizApp.liButtons.forEach((li) => {
+    li.classList.remove("clicked");
+  })
+  
+
+    
 };
 
 quizApp.uncheckRadio = function () {
@@ -132,6 +141,9 @@ quizApp.uncheckRadio = function () {
 quizApp.liButtons.forEach((li) => {
   li.addEventListener("click", () => {
     // console.log('heeeey')
+    quizApp.liButtons.forEach(li => {
+    li.classList.remove('animateInto')
+    })
     quizApp.liButtons.forEach((li) => li.classList.remove("clicked"));
     li.classList.add("clicked");
   });
@@ -169,7 +181,7 @@ quizApp.submit.addEventListener("click", () => {
       quizApp.loadQuiz();
       quizApp.setStatusBar();
     } else {
-      quizApp.quizTitle.innerHTML = `
+      quizApp.quizCard.innerHTML = `
            <h2>Congrats !!! 
            You got ${quizApp.scoreCounter}/ ${quizApp.gameLength} questions correctly</h2>
            <button class="submit" onclick="location.reload()">Reload</button>`;

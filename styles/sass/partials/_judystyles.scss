@@ -28,7 +28,6 @@ img {
   position: absolute;
   top: -1em;
   left: 65em;
-  
 }
 
 .nameInput {
@@ -37,8 +36,6 @@ img {
   align-items: center;
   padding: 10em 7em;
   border-radius: 1.2em;
-
-
 }
 
 input[type="text"] {
@@ -50,26 +47,25 @@ input[type="text"] {
   border: 1px solid #d88771;
 }
 
-
-
 .quizWrapper {
-  height: 85%;
+  transition: all 0.5s ease;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
 }
 
-
-.quizTitle {
+.quizCard {
+  height: 75vh;
   display: flex;
   background-color: white;
   justify-content: space-between;
   align-items: center;
-  padding: 2.5em 2.5em;
+  padding: 2.2em 2.5em;
   border-radius: 1.2em;
   display: flex;
   flex-direction: column;
   width: 500px;
-  // max-width: 500px;
-  // height: 700px;
-  // max-height: 800px;
+  transition: all 0.5s ease; 
 
   .choices {
     display: flex;
@@ -79,6 +75,7 @@ input[type="text"] {
     padding-left: 0;
     gap: 1rem;
     width: 100%;
+    transition: all 0.5s ease;
   }
 
   .questions {
@@ -87,6 +84,6 @@ input[type="text"] {
     width: 100%;
     text-align: left;
     font-weight: 700;
+    transition: all 0.5s ease;
   }
-
 }
