@@ -1,15 +1,22 @@
 .status {
     width: 90px;
     height: 15px;
-    border: 1px solid #d88771;
+    border: 1px solid white;
     border-radius: 5px;
-    align-self: flex-end;
+    // align-self: flex-end;
     transition: all 0.8s ease;
+    margin-top: 1rem;
 
     .statusBar {
-        width: 0%;
+        width: 10%;
         height: 100%;
         border-radius: 5px;
+            transition: all 0.8s ease;
         background-color: aquamarine;
     }
+}
+
+// Display Pages active
+.active {
+    display: flex;
 }

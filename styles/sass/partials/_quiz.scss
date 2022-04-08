@@ -1,0 +1,55 @@
+
+
+.quizSection {
+  transition: all 0.5s ease;
+  position: relative;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0.2rem 0;
+
+  .illustration {
+    position: absolute;
+    top: -4.2rem;
+    right: -0.6rem;
+    min-width: 80px;
+    max-width: 160px;
+  }
+}
+
+.quizCard {
+  height: 70vh;
+  display: flex;
+  background-color: white;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.9rem 2.2rem;
+  border-radius: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  transition: all 0.5s ease; 
+
+  .choices {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // padding-left: 0;
+    gap: 0.65rem;
+    width: 100%;
+    transition: all 0.5s ease;
+  }
+
+  .questions {
+    font-size: 0.9rem;
+    text-align: center;
+    width: 100%;
+    text-align: left;
+    font-weight: 700;
+    transition: all 0.5s ease;
+  }
+
+  
+}

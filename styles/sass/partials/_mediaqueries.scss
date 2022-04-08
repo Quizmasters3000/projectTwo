@@ -1,4 +1,18 @@
+// Media Queries
+
+@media (max-width: 950px) {
+.wrapper {
+  width: 60%;
+}
+}
+
+
 @media (max-width: 650px) {
+
+
+  .wrapper {
+    width: 70%;
+  }
   // .submitAnswer {
   //   margin-top: 0.5em;
   //   padding: 1em 2em;
@@ -23,6 +37,10 @@
   // }
 }
 @media (max-width: 500px) {
+
+  .wrapper {
+    width: 75%;
+  }
   // .submitAnswer {
   //   width: 40%;
   // }
@@ -53,38 +71,43 @@
   // }
 }
 @media (max-width: 390px) {
+
+  .wrapper {
+    width: 70%;
+  }
   .quizCard {
-    width: 80vw;
+    // width: 80vw;
     height: 70vh;
-    padding: 1.3em 1.3em;
+    padding: 1.3rem 1.3rem;
     justify-content: flex-end;
 
     .illustration {
       top: 115px;
       right: 13px;
       width: 140px;
+      position: static;
     }
 
     .questions {
       margin-bottom: auto;
-      font-size: 0.9em;
+      font-size: 0.9rem;
     }
    
     .liButton {
       padding: 0;
 
       label {
-        padding: 0.5em;
-        font-size: 0.85em;
+        padding: 0.5rem;
+        font-size: 0.85rem;
       }
     }
   }
 
   .submitAnswer {
     background-color: rgb(246, 208, 180);
-    border-radius: 0.2em;
-    font-size: 0.85em;
-    padding: 0.5em 1em;
+    border-radius: 0.2rem;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
   }
 
   .status {
@@ -92,7 +115,7 @@
     height: 10px;
     border: 1px solid #d88771;
     border-radius: 5px;
-    align-self: flex-end;
+    
 
     .statusBar {
       width: 0%;
