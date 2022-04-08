@@ -77,7 +77,7 @@ console.log(quizApp.radioTheme)
 
 // Fetches random words
 quizApp.getRandomWord = function () {
-  fetch(`http://api.datamuse.com/words?rel_trg=${quizApp.queryTheme}&max=200`)
+  fetch(`https://api.datamuse.com/words?rel_trg=${quizApp.queryTheme}&max=200`)
     .then((res) => res.json())
     .then((resJson) => {
       
