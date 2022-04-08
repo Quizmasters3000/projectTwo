@@ -142,24 +142,24 @@ select {
 }
 
 button,
-html [type=button],
-[type=reset],
-[type=submit] {
+html [type="button"],
+[type="reset"],
+[type="submit"] {
   -webkit-appearance: button;
 }
 
 button::-moz-focus-inner,
-[type=button]::-moz-focus-inner,
-[type=reset]::-moz-focus-inner,
-[type=submit]::-moz-focus-inner {
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
 
 button:-moz-focusring,
-[type=button]:-moz-focusring,
-[type=reset]:-moz-focusring,
-[type=submit]:-moz-focusring {
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -186,25 +186,25 @@ textarea {
   overflow: auto;
 }
 
-[type=checkbox],
-[type=radio] {
+[type="checkbox"],
+[type="radio"] {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 0;
 }
 
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 
-[type=search] {
+[type="search"] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
 
-[type=search]::-webkit-search-cancel-button,
-[type=search]::-webkit-search-decoration {
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -260,22 +260,18 @@ html {
   overflow: hidden;
 }
 
-.active {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.inactive {
-  display: none;
+html {
+  font-size: 125%;
+  margin: 0;
 }
 
 body {
-  background: linear-gradient(100deg, #2879f2, rgba(151, 110, 247, 0.9215686275));
+  background: linear-gradient(100deg, #2879f2, #976ef7eb);
+  font-family: "Poppins", sans-serif;
+  color: #030369;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -283,7 +279,6 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  font-family: "Poppins", sans-serif;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -293,49 +288,135 @@ body {
   height: 100vh;
 }
 
-.imgContainer {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[5];
-      grid-template-columns: repeat(5, 1fr);
-  -ms-grid-column: 4;
-  -ms-grid-column-span: 1;
-  grid-column: 4/5;
-}
-
 img {
+  display: block;
   width: 100%;
-  -ms-grid-column: 4;
-  -ms-grid-column-span: 1;
-  grid-column: 4/5;
 }
 
-.nameInput {
-  background-color: white;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+h1 {
+  padding: 0;
+  margin: 0;
+  color: white;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 40%;
+}
+
+footer p {
+  font-size: 0.6rem;
+  padding: 0;
+  margin: 0;
+  color: white;
+}
+
+.welcomeSection {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: none;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 10em 7em;
-  border-radius: 1.2em;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  flex-direction: column;
+  margin: 0.2rem 0;
 }
 
-input[type=text] {
+.introCard {
+  background-color: white;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 1.2em;
+  height: 75vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1.9rem 2.2rem;
+  border-radius: 1.2rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-width: 100%;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.introCard input[type="text"] {
   margin-top: 1em;
   width: 100%;
-  height: 2em;
+  height: 2rem;
   border-radius: 0.3em;
-  font-size: 1.3em;
+  font-size: 1rem;
   border: 1px solid #d88771;
+  padding-left: 1rem;
+  font-family: inherit;
+  color: inherit;
 }
 
-.quizWrapper {
-  height: 85%;
+.introCard ::-webkit-input-placeholder {
+  color: #d88771;
 }
 
-.quizTitle {
+.introCard :-ms-input-placeholder {
+  color: #d88771;
+}
+
+.introCard ::-ms-input-placeholder {
+  color: #d88771;
+}
+
+.introCard ::placeholder {
+  color: #d88771;
+}
+
+.quizSection {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  position: relative;
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0.2rem 0;
+}
+
+.quizSection .illustration {
+  position: absolute;
+  top: -4.2rem;
+  right: -0.6rem;
+  min-width: 80px;
+  max-width: 160px;
+}
+
+.quizCard {
+  height: 70vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -346,16 +427,19 @@ input[type=text] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 2.5em 2.5em;
-  border-radius: 1.2em;
+  padding: 1.9rem 2.2rem;
+  border-radius: 1.2rem;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 500px;
+  min-width: 100%;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
-.quizTitle .choices {
+
+.quizCard .choices {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -369,31 +453,45 @@ input[type=text] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-left: 0;
-  gap: 1rem;
+  gap: 0.65rem;
   width: 100%;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
-.quizTitle .questions {
-  font-size: 1.15em;
+
+.quizCard .questions {
+  font-size: calc(1vw + 1vh);
   text-align: center;
   width: 100%;
   text-align: left;
   font-weight: 700;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 .status {
   width: 90px;
   height: 15px;
-  border: 1px solid #d88771;
+  border: 1px solid white;
   border-radius: 5px;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+  margin-top: 1rem;
 }
+
 .status .statusBar {
-  width: 0%;
+  width: 10%;
   height: 100%;
   border-radius: 5px;
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
   background-color: aquamarine;
+}
+
+.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .liButton {
@@ -406,28 +504,37 @@ input[type=text] {
   width: 100%;
   list-style: none;
   border: 1px solid #d88771;
-  border-radius: 0.3em;
+  border-radius: 0.3rem;
   position: relative;
+  color: none;
+  font-size: 0.82rem;
 }
+
 .liButton:hover, .liButton:focus {
   background-color: lightskyblue;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   border: lightskyblue 1px solid;
+  color: none;
 }
+
 .liButton:active {
-  background-color: rgb(97, 190, 247);
+  background-color: #61bef7;
+  color: none;
 }
-.liButton input[type=radio] {
+
+.liButton input[type="radio"] {
   display: none;
   position: absolute;
 }
+
 .liButton label {
   cursor: pointer;
-  padding: 1em;
+  padding: 0.5rem 0.5rem 0.5rem 0.9rem;
   width: 100%;
   height: 100%;
   margin: 0;
+  color: none;
   display: inline-block;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
@@ -436,10 +543,12 @@ input[type=text] {
           transform: scale(1);
   text-transform: capitalize;
 }
+
 .liButton label span {
   text-transform: capitalize;
-  margin-left: 1rem;
+  margin-left: 1.4rem;
   display: inline-block;
+  color: none;
 }
 
 .one {
@@ -505,32 +614,6 @@ input[type=text] {
     opacity: 1;
   }
 }
-.submit {
-  margin-top: 1em;
-  background-color: rgb(246, 208, 180);
-  color: black;
-  border-radius: 0.2em;
-  padding: 0.7em 2em;
-  border: none;
-  font-size: 1.3em;
-  margin-top: 1em;
-  cursor: pointer;
-}
-
-.submitAnswer {
-  background-color: rgb(246, 208, 180);
-  border-radius: 0.2em;
-  padding: 0.7em 2em;
-  border: none;
-  font-size: 1.3em;
-  color: white;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-}
-.submitAnswer:hover {
-  background-color: gold;
-  cursor: pointer;
-}
 
 .animateInto {
   -webkit-animation-name: animateInto;
@@ -543,89 +626,122 @@ input[type=text] {
 
 .clicked {
   background-color: lightskyblue;
+  color: white;
+  border: lightskyblue 1px solid;
+}
+
+button {
+  font-weight: 700;
+}
+
+.submitName {
+  background-color: #f6d0b4;
+  border-radius: 0.2rem;
+  padding: 0.5rem 2rem;
+  border: none;
+  font-size: 1rem;
+  color: white;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.submitName:hover {
+  background-color: #ffb784;
+  cursor: pointer;
+}
+
+.againButton {
+  background-color: #f6d0b4;
+  border-radius: 0.2rem;
+  padding: 0.5rem 2rem;
+  border: none;
+  font-size: 1rem;
+  color: white;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.againButton:hover {
+  background-color: #ffb784;
+  cursor: pointer;
+}
+
+.submitAnswer {
+  background-color: #f6d0b4;
+  border-radius: 0.2rem;
+  padding: 0.5rem 2rem;
+  border: none;
+  font-size: 1rem;
+  color: white;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.submitAnswer:hover {
+  background-color: #ffb784;
+  cursor: pointer;
+}
+
+@media (max-width: 950px) {
+  .wrapper {
+    width: 60%;
+  }
 }
 
 @media (max-width: 650px) {
-  .submitAnswer {
-    margin-top: 0.5em;
-    padding: 1em 2em;
-    border: none;
-    width: 200px;
-    font-size: 0.9em;
-  }
-
-  .quizTitle {
-    width: 400px;
-    max-width: 400px;
-    height: 600px;
-    max-height: 600px;
-  }
-  .quizTitle h3 {
-    font-size: 1.5em;
-    width: 300px;
-  }
-  .quizTitle .liButton {
-    font-size: 1em;
+  .wrapper {
+    width: 70%;
   }
 }
+
 @media (max-width: 500px) {
-  .submitAnswer {
-    width: 40%;
-  }
-
-  .submit {
-    background-color: rgb(246, 208, 180);
-    border-radius: 0.2em;
-  }
-
-  .quizTitle {
-    width: 350px;
-    max-width: 350px;
-    height: 600px;
-    max-height: 600px;
-  }
-
-  h3 {
-    font-size: 1em;
-    width: 200px;
-  }
-
-  .liButton {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    border: 1px solid #d88771;
-    padding: 1em 0;
-    margin: 0.5em auto 0;
-    font-size: 1em;
+  .wrapper {
+    width: 75%;
   }
 }
+
 @media (max-width: 390px) {
-  .quizTitle {
-    width: 300px;
-    max-width: 300px;
+  .wrapper {
+    width: 70%;
   }
-  .quizTitle h3 {
-    font-size: 0.9em;
+  .quizCard {
+    height: 70vh;
+    padding: 1.3rem 1.3rem;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
   }
-  .quizTitle .liButton {
+  .quizCard .illustration {
+    top: 115px;
+    right: 13px;
+    width: 140px;
+    position: static;
+  }
+  .quizCard .questions {
+    margin-bottom: auto;
+  }
+  .quizCard .liButton {
     padding: 0;
   }
-  .quizTitle .liButton label {
-    padding: 0.5em;
-    font-size: 0.85em;
+  .quizCard .liButton label {
+    padding: 0.5rem;
+    font-size: 0.85rem;
   }
-
+  .submitAnswer {
+    background-color: #f6d0b4;
+    border-radius: 0.2rem;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
   .status {
     width: 50px;
     height: 10px;
     border: 1px solid #d88771;
     border-radius: 5px;
-    -ms-flex-item-align: end;
-        align-self: flex-end;
   }
   .status .statusBar {
     width: 0%;
