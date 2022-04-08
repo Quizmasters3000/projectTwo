@@ -1,16 +1,16 @@
 const quizApp = {};
 
 quizApp.apiKEY = "44173360-753a-4c6f-9557-6cb1310964a6";
-quizApp.submitName = document.querySelector(".submit");
-quizApp.nameInput = document.querySelector(".nameInput");
-quizApp.quizWrapper = document.querySelector(".quizWrapper");
-quizApp.quizTitle = document.querySelector(".quizTitle");
+quizApp.submitName = document.querySelector(".submitName");
+quizApp.introCard = document.querySelector(".introCard");
+quizApp.quizSection = document.querySelector(".quizSection");
+quizApp.quizCard = document.querySelector(".quizCard");
 quizApp.radioChoices = document.querySelectorAll(".choice");
 quizApp.radioA = document.getElementById("radioA");
 quizApp.radioB = document.getElementById("radioB");
 quizApp.radioC = document.getElementById("radioC");
 quizApp.radioD = document.getElementById("radioD");
-quizApp.submit = document.querySelector(".submitAnswer");
+quizApp.submitAnswer = document.querySelector(".submitAnswer");
 quizApp.questionDefintion = document.querySelector(".questions");
 quizApp.choices = document.querySelector(".choices");
 quizApp.liButtons = document.querySelectorAll(".liButton");
@@ -37,9 +37,11 @@ quizApp.submitName.addEventListener("click", () => {
     alert("Please enter your name");
   } else {
     quizApp.myName = quizApp.nameElement.value;
-    quizApp.nameInput.classList.add("inactive");
-    quizApp.quizWrapper.classList.remove("inactive");
-    quizApp.quizWrapper.classList.add("active");
+    const welcome = document.querySelector('.welcomeSection')
+    welcome.classList.remove("active");
+    // quizApp.quizWrapper.classList.remove("inactive");
+    quizApp.quizSection.classList.add("active");
+
     quizApp.getrandomImage();
     quizApp.displayImage();
     return quizApp.myName;
@@ -54,12 +56,14 @@ quizApp.changeColor = function () {
   console.log(quizApp.gradient);
 };
 
+// Creates random number
 quizApp.getRandomNumber = function () {
   quizApp.surpriseNumber = Math.floor(Math.random() * 4);
   console.log(quizApp.surpriseNumber);
   return quizApp.surpriseNumber;
 };
 
+// Fetches random words
 quizApp.getRandomWord = function () {
   fetch(`https://random-word-api.herokuapp.com/word?number=4`)
     .then((res) => res.json())
@@ -85,6 +89,8 @@ quizApp.getRandomWord = function () {
       // buttonSubmit();
       //   selectedRadio(randomWord);
     });
+
+  // Fetches dictionary meaning for words
   quizApp.fetchDiction = (randomWord) => {
     fetch(
       `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${randomWord}?key=${quizApp.apiKEY}`
@@ -114,30 +120,40 @@ quizApp.resetAll = function () {
   quizApp.uncheckRadio();
 };
 
+// Loads quiz and core animations
 quizApp.loadQuiz = function () {
   quizApp.uncheckRadio();
   quizApp.getRandomWord();
   // selectedRadio()
-  quizApp.quizCounter++;
-  quizApp.liButtons.forEach((li) => li.classList.remove("clicked"));
   quizApp.liButtons.forEach(li => {
-        li.classList.toggle('animateInto')
-    })
+      li.classList.add('animateInto')
+  })
+  
+  quizApp.quizCounter++;
+
+  quizApp.liButtons.forEach((li) => {
+    li.classList.remove("clicked");
+  })
 };
 
+// Unchecks the radio options from memory
 quizApp.uncheckRadio = function () {
   quizApp.radioChoices.forEach((choice) => (choice.checked = false));
 };
 
+// Adds animations to radio buttons
 quizApp.liButtons.forEach((li) => {
   li.addEventListener("click", () => {
-    // console.log('heeeey')
+    quizApp.liButtons.forEach(li => {
+    li.classList.remove('animateInto')
+    })
     quizApp.liButtons.forEach((li) => li.classList.remove("clicked"));
     li.classList.add("clicked");
   });
 });
 
-quizApp.statusCounter = 0;
+// Status bar functionality
+quizApp.statusCounter = 1;
 quizApp.setStatusBar = function () {
   quizApp.statusCounter++;
   let percentage = (quizApp.statusCounter / quizApp.gameLength) * 100;
@@ -145,6 +161,7 @@ quizApp.setStatusBar = function () {
   document.querySelector(".statusBar").style.width = `${percentage}%`;
 };
 
+// Checks to see what button was selected
 quizApp.selectedRadio = function (randomWord) {
   let chosen;
   quizApp.radioChoices.forEach((choice) => {
@@ -155,8 +172,10 @@ quizApp.selectedRadio = function (randomWord) {
   return chosen;
 };
 
-quizApp.submit.addEventListener("click", () => {
+// Answer submission button functionality and animations
+quizApp.submitAnswer.addEventListener("click", () => {
   quizApp.getrandomImage();
+  quizApp.illustration = document.querySelector('.illustration').innerHTML = " ";
   quizApp.displayImage();
   quizApp.changeColor();
   let chosen = quizApp.selectedRadio();
@@ -169,29 +188,33 @@ quizApp.submit.addEventListener("click", () => {
       quizApp.loadQuiz();
       quizApp.setStatusBar();
     } else {
-      quizApp.quizTitle.innerHTML = `
+      quizApp.quizCard.innerHTML = `
            <h2>Congrats !!! 
            You got ${quizApp.scoreCounter}/ ${quizApp.gameLength} questions correctly</h2>
-           <button class="submit" onclick="location.reload()">Reload</button>`;
+           <button class="againButton" onclick="location.reload()">Try Again</button>`;
     }
   }
 });
 
+// Generates random fun illustrations for the quiz card 
 quizApp.getrandomImage = function () {
   quizApp.randomImage = Math.floor(Math.random() * quizApp.imageSources.length);
   console.log(quizApp.randomImage, quizApp.imageSources[quizApp.randomImage]);
+  console.log('images')
   return quizApp.imageSources[quizApp.randomImage];
 };
 
+// Displays random illustrations
 quizApp.displayImage = function () {
-  quizApp.imageArea = document.createElement("div");
+  quizApp.illustration = document.querySelector('.illustration');
+  // quizApp.illustration.style.display = 'block';
   quizApp.image = document.createElement("img");
   quizApp.image.src = `${quizApp.imageSources[quizApp.randomImage]}`;
-  quizApp.imageArea.appendChild(quizApp.image);
-  // document.querySelector(".imgContainer").innerHTML = " ";
+  quizApp.illustration.append(quizApp.image);
   // document.querySelector(".imgContainer").appendChild(quizApp.imageArea);
 };
 
+// IIFE to start things off after logging user name
 quizApp.init = function () {
   (() => {
     quizApp.resetAll();

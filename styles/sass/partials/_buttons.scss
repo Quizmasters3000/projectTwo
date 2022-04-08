@@ -1,122 +1,153 @@
+
+// Multiple Choice Radio 'Buttons'
 .liButton {
-    justify-content: center;
-    align-items: center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  list-style: none;
+  border: 1px solid #d88771;
+  border-radius: 0.3rem;
+  position: relative;
+  color: none;
+  font-size: 0.82rem;
+
+  &:hover,
+  &:focus {
+    background-color: lightskyblue;
+    transition: all 0.5s ease;
+    border: lightskyblue 1px solid;
+    color: none;
+  }
+  &:active {
+    background-color: rgb(97, 190, 247);
+    color: none;
+  }
+
+  input[type="radio"] {
+    display: none;
+    position: absolute;
+  }
+
+  label {
+    cursor: pointer;
+    padding: 0.5rem 0.5rem 0.5rem 0.9rem;
     width: 100%;
-    list-style: none;
-    border: 1px solid #d88771;
-    border-radius: 0.3em;
-    position: relative;
-   
+    height: 100%;
+    margin: 0;
+    color: none;
+    display: inline-block;
+    transition: all 0.5s ease;
+    opacity: 1;
+    transform: scale(1);
+    text-transform: capitalize;
 
-    &:hover, 
-    &:focus {
-        background-color: lightskyblue;
-        transition: all 0.5s ease;
-        border: lightskyblue 1px solid;
+    span {
+      text-transform: capitalize;
+      margin-left: 1.4rem;
+      display: inline-block;
+      color: none;
     }
-    &:active {
-        background-color: rgb(97, 190, 247);
-    }
-
-    input[type="radio"] {
-        display: none;
-        position: absolute;
-    }
-
-
-    label {
-        cursor: pointer;
-        padding: 1em;
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        display: inline-block;
-        transition: all 0.5s ease;
-        opacity: 1;
-        transform: scale(1);
-        text-transform: capitalize;
-
-        span {
-            text-transform: capitalize;
-            margin-left: 1rem;
-            display: inline-block;
-        }
-    }
+  }
 }
 
 .one {
-    animation-delay: 250ms;
+  animation-delay: 250ms;
 }
 
 .two {
-    animation-delay: 400ms;
+  animation-delay: 400ms;
 }
 
 .three {
-    animation-delay: 100ms;
+  animation-delay: 100ms;
 }
 
 .four {
-    animation-delay: 700ms;
+  animation-delay: 700ms;
 }
 
 @keyframes animateInto {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
 
-    50% {
-        transform: scale(1.3);
-    }
+  50% {
+    transform: scale(1.3);
+  }
 
-    50% {
-        transform: scale(1.2);
-        opacity: 0;
+  50% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
 
-    }
-
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
-
-
-.submit {
-    margin-top: 1em;
-    background-color: rgb(246, 208, 180);
-    color: black;
-    border-radius: 0.2em;
-    padding: 0.7em 2em;
-    border: none;
-    font-size: 1.3em;
-    margin-top: 1em;
-    cursor: pointer;
-}
-
-.submitAnswer {
-    background-color: rgb(246, 208, 180);
-    border-radius: 0.2em;
-    padding: 0.7em 2em;
-    border: none;
-    font-size: 1.3em;
-    color: white;
-    align-self: flex-end;
-    &:hover {
-        background-color: gold;
-        cursor: pointer;
-    }
-}
-
 
 .animateInto {
-    animation-name: animateInto;
-    animation-duration: 2s;
-    animation-delay: none;
+  animation-name: animateInto;
+  animation-duration: 2s;
+  animation-delay: none;
 }
 
 .clicked {
-    background-color: lightskyblue;
+  background-color: lightskyblue;
+  color: rgb(255, 255, 255);
+  border: lightskyblue 1px solid;
+}
+
+// Functional Buttons
+
+
+button {
+  font-weight: 700;
+}
+.submitName {
+  background-color: rgb(246, 208, 180);
+  border-radius: 0.2rem;
+  padding: 0.5rem 2rem;
+  border: none;
+  font-size: 1rem;
+  color: white;
+  transition: all 0.5s ease;
+  
+  &:hover {
+    background-color: rgb(255, 183, 132);
+    cursor: pointer;
+  }
+}
+
+.againButton {
+  background-color: rgb(246, 208, 180);
+  border-radius: 0.2rem;
+  padding: 0.5rem 2rem;
+  border: none;
+  font-size: 1rem;
+  color: white;
+  align-self: flex-end;
+  transition: all 0.5s ease;
+
+  &:hover {
+    background-color: rgb(255, 183, 132);
+    cursor: pointer;
+  }
+}
+
+.submitAnswer {
+  background-color: rgb(246, 208, 180);
+  border-radius: 0.2rem;
+  padding: 0.5rem 2rem;
+  border: none;
+  font-size: 1rem;
+  color: white;
+  align-self: flex-end;
+  transition: all 0.5s ease;
+  &:hover {
+    background-color: rgb(255, 183, 132);
+    cursor: pointer;
+  }
 }
 

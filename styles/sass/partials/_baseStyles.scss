@@ -1,0 +1,54 @@
+// General Styling
+
+html {
+    font-size: 125%;
+    margin: 0;
+}
+
+body {
+    // background-color: #d88771;
+    background: linear-gradient(100deg, #2879f2, #976ef7eb);
+    font-family: "Poppins",
+    sans-serif;
+    color: rgb(3, 3, 105);
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+h1 {
+    padding: 0;
+    margin: 0;
+    color: white;
+    align-self: flex-start;
+}
+
+.wrapper {
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 40%;
+}
+
+footer {
+    p {
+        font-size: 0.6rem;
+        padding: 0;
+        margin: 0;
+        color: white;
+    }
+}
