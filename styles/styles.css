@@ -455,7 +455,7 @@ footer p {
   transition: all 0.5s ease;
 }
 .quizCard .questions {
-  font-size: 0.9rem;
+  font-size: calc(1vw + 1vh);
   text-align: center;
   width: 100%;
   text-align: left;
@@ -706,7 +706,6 @@ button {
   }
   .quizCard .questions {
     margin-bottom: auto;
-    font-size: 0.9rem;
   }
   .quizCard .liButton {
     padding: 0;

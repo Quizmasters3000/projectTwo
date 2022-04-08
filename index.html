@@ -20,17 +20,61 @@
       <section class="welcomeSection active">
         <div class="introCard">
           <h3>Welcome to Quiztionary</h3>
+
+          <ul class="themes">
+            <li class="themeButton">
+              <input type="radio" name="theme" id="medicine" />
+              <label class="radioTheme" for="medicine" id="medicine"
+                >Medicine</label
+              >
+            </li>
+            <li class="themeButton">
+              <input type="radio" name="theme" id="insects" />
+              <label class="radioTheme" for="insects" id="insects"
+                >Insects</label
+              >
+            </li>
+            <li class="themeButton">
+              <input type="radio" name="theme" id="trees" />
+              <label class="radioTheme" for="trees" id="trees">Trees</label>
+            </li>
+            <li class="themeButton">
+              <input type="radio" name="theme" id="mammals" />
+              <label class="radioTheme" for="mammals" id="mammals"
+                >Mammals</label
+              >
+            </li>
+            <li class="themeButton">
+              <input type="radio" name="theme" id="flowers" />
+              <label class="radioTheme" for="flowers" id="flowers"
+                >Flowers</label
+              >
+            </li>
+            <li class="themeButton">
+              <input type="radio" name="theme" id="planets" />
+              <label class="radioTheme" for="planets" id="planets"
+                >Planets</label
+              >
+            </li>
+          </ul>
           <label for="name" class="sr-only"
             >Welcome, please submit your name
           </label>
-          <input type="text" id="name" class="name" placeholder="First Name" />
+          <input
+            type="text"
+            id="name"
+            class="userName"
+            placeholder="First Name"
+          />
           <button type="submit" class="submitName">Submit</button>
         </div>
       </section>
 
       <section class="quizSection">
         <div class="quizCard">
-          <h3 class="questions">Question Goes Here!</h3>
+          <div class="questionContainer">
+            <h3 class="questions">Question Goes Here!</h3>
+          </div>
           <span class="illustration"></span>
           <ul class="choices">
             <li class="liButton one">

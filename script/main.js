@@ -15,13 +15,14 @@ quizApp.questionDefintion = document.querySelector(".questions");
 quizApp.choices = document.querySelector(".choices");
 quizApp.liButtons = document.querySelectorAll(".liButton");
 quizApp.quizCounter = 1;
+quizApp.choiceCounter = 0;
 quizApp.scoreCounter = 0;
 quizApp.surpriseNumber;
 quizApp.gradient = 45;
 quizApp.radioLabels = document.querySelectorAll(".radioLabel");
-quizApp.nameElement = document.querySelector("input");
+quizApp.nameElement = document.querySelector(".userName");
 quizApp.myName;
-quizApp.gameLength = 5;
+quizApp.gameLength = 10;
 quizApp.imageSources = [
   "./assets/1.png",
   "./assets/2.png",
@@ -37,11 +38,11 @@ quizApp.submitName.addEventListener("click", () => {
     alert("Please enter your name");
   } else {
     quizApp.myName = quizApp.nameElement.value;
-    const welcome = document.querySelector('.welcomeSection')
+    // quizApp.myName = "stephen"
+    const welcome = document.querySelector(".welcomeSection");
     welcome.classList.remove("active");
     // quizApp.quizWrapper.classList.remove("inactive");
     quizApp.quizSection.classList.add("active");
-
     quizApp.getrandomImage();
     quizApp.displayImage();
     return quizApp.myName;
@@ -63,16 +64,27 @@ quizApp.getRandomNumber = function () {
   return quizApp.surpriseNumber;
 };
 
+
+quizApp.pusher = function() {
+  quizApp.choiceCounter = (Math.floor(Math.random() * 44)) 
+}
+
+quizApp.queryTheme;
+quizApp.radioTheme = document.querySelectorAll('.radioTheme')
+console.log(quizApp.radioTheme)
+
+
+
 // Fetches random words
 quizApp.getRandomWord = function () {
-  fetch(`https://random-word-api.herokuapp.com/word?number=4`)
+  fetch(`http://api.datamuse.com/words?rel_trg=${quizApp.queryTheme}&max=200`)
     .then((res) => res.json())
     .then((resJson) => {
-      console.log("random word", resJson);
-      let wordA = resJson[0];
-      let wordB = resJson[1];
-      let wordC = resJson[2];
-      let wordD = resJson[3];
+      
+      let wordA = resJson[0 + quizApp.choiceCounter].word;
+      let wordB = resJson[1 + quizApp.choiceCounter].word;
+      let wordC = resJson[2 + quizApp.choiceCounter].word;
+      let wordD = resJson[3 + quizApp.choiceCounter].word;
 
       document.getElementById("spanA").innerText = wordA;
       document.getElementById("spanB").innerText = wordB;
@@ -82,7 +94,8 @@ quizApp.getRandomWord = function () {
       quizApp.getRandomNumber();
 
       let randomWords = resJson;
-      let randomWord = randomWords[quizApp.surpriseNumber];
+      console.log(randomWords);
+      let randomWord = randomWords[quizApp.surpriseNumber + quizApp.choiceCounter].word;
       console.log(randomWord);
 
       quizApp.fetchDiction(randomWord);
@@ -110,10 +123,24 @@ quizApp.getRandomWord = function () {
       .catch((error) => {
         if (error) {
           quizApp.getRandomWord();
+
         }
       });
   };
 };
+
+quizApp.themeChoser = function() {
+  quizApp.radioTheme.forEach(theme => {
+    theme.addEventListener('click', function() {
+      if(theme.id) {
+        console.log(theme.id)
+        quizApp.queryTheme = theme.id
+        quizApp.getRandomWord()
+      }
+    })
+  })
+}
+
 
 quizApp.resetAll = function () {
   quizApp.getRandomWord(quizApp.surpriseNumber);
@@ -124,16 +151,18 @@ quizApp.resetAll = function () {
 quizApp.loadQuiz = function () {
   quizApp.uncheckRadio();
   quizApp.getRandomWord();
+  quizApp.pusher()
+
   // selectedRadio()
-  quizApp.liButtons.forEach(li => {
-      li.classList.add('animateInto')
-  })
-  
+  quizApp.liButtons.forEach((li) => {
+    li.classList.add("animateInto");
+  });
+
   quizApp.quizCounter++;
 
   quizApp.liButtons.forEach((li) => {
     li.classList.remove("clicked");
-  })
+  });
 };
 
 // Unchecks the radio options from memory
@@ -144,9 +173,9 @@ quizApp.uncheckRadio = function () {
 // Adds animations to radio buttons
 quizApp.liButtons.forEach((li) => {
   li.addEventListener("click", () => {
-    quizApp.liButtons.forEach(li => {
-    li.classList.remove('animateInto')
-    })
+    quizApp.liButtons.forEach((li) => {
+      li.classList.remove("animateInto");
+    });
     quizApp.liButtons.forEach((li) => li.classList.remove("clicked"));
     li.classList.add("clicked");
   });
@@ -175,7 +204,8 @@ quizApp.selectedRadio = function (randomWord) {
 // Answer submission button functionality and animations
 quizApp.submitAnswer.addEventListener("click", () => {
   quizApp.getrandomImage();
-  quizApp.illustration = document.querySelector('.illustration').innerHTML = " ";
+  quizApp.illustration = document.querySelector(".illustration").innerHTML =
+    " ";
   quizApp.displayImage();
   quizApp.changeColor();
   let chosen = quizApp.selectedRadio();
@@ -189,34 +219,33 @@ quizApp.submitAnswer.addEventListener("click", () => {
       quizApp.setStatusBar();
     } else {
       quizApp.quizCard.innerHTML = `
-           <h2>Congrats !!! 
+           <h2>Congrats ${quizApp.myName}!!! 
            You got ${quizApp.scoreCounter}/ ${quizApp.gameLength} questions correctly</h2>
            <button class="againButton" onclick="location.reload()">Try Again</button>`;
     }
   }
 });
 
-// Generates random fun illustrations for the quiz card 
+// Generates random fun illustrations for the quiz card
 quizApp.getrandomImage = function () {
   quizApp.randomImage = Math.floor(Math.random() * quizApp.imageSources.length);
   console.log(quizApp.randomImage, quizApp.imageSources[quizApp.randomImage]);
-  console.log('images')
   return quizApp.imageSources[quizApp.randomImage];
 };
 
 // Displays random illustrations
 quizApp.displayImage = function () {
-  quizApp.illustration = document.querySelector('.illustration');
-  // quizApp.illustration.style.display = 'block';
+  quizApp.illustration = document.querySelector(".illustration");
   quizApp.image = document.createElement("img");
   quizApp.image.src = `${quizApp.imageSources[quizApp.randomImage]}`;
   quizApp.illustration.append(quizApp.image);
-  // document.querySelector(".imgContainer").appendChild(quizApp.imageArea);
 };
 
 // IIFE to start things off after logging user name
 quizApp.init = function () {
   (() => {
+    quizApp.themeChoser()
+
     quizApp.resetAll();
   })();
 };
