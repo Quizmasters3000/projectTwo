@@ -18,17 +18,17 @@ body {
   height: 100vh;
 }
 
-.imgContainer {
-  width: 100%;
-  position: relative;
-}
+// .imgContainer {
+//   width: 100%;
+//   position: relative;
+// }
 
-img {
-  width: 10%;
-  position: absolute;
-  top: -1em;
-  left: 65em;
-}
+// img {
+//   width: 10%;
+//   position: absolute;
+//   top: -1em;
+//   left: 65em;
+// }
 
 .nameInput {
   background-color: white;
@@ -49,9 +49,25 @@ input[type="text"] {
 
 .quizWrapper {
   transition: all 0.5s ease;
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .illustration {
+    // position: absolute;
+    // top: 0;
+    // right: 0;
+    // display: none;
+    // width: 10%;
+    position: static;
+    min-width: 80px;
+
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
 }
 
 .quizCard {
@@ -86,4 +102,6 @@ input[type="text"] {
     font-weight: 700;
     transition: all 0.5s ease;
   }
+
+  
 }
