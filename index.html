@@ -7,7 +7,7 @@
     <title>Quiztionary</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
+    <script src="https://kit.fontawesome.com/453ecd0b52.js" crossorigin="anonymous"></script>    <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
@@ -20,46 +20,54 @@
       <section class="welcomeSection active">
         <div class="introCard">
           <h3>Welcome to Quiztionary</h3>
-
+          <p class="select">Please select:</p>
           <ul class="themes">
             <li class="themeButton">
-              <input type="radio" name="theme" id="medicine" />
+              <input type="radio" name="theme" class="theme" id="medicine" />
               <label class="radioTheme" for="medicine" id="medicine"
-                >Medicine</label
+                ><i class="fas fa-user-md"></i> Medicine</label
               >
             </li>
             <li class="themeButton">
-              <input type="radio" name="theme" id="insects" />
+              <input type="radio" name="theme" class="theme" id="insects" />
               <label class="radioTheme" for="insects" id="insects"
-                >Insects</label
+                ><i class="fas fa-bug"></i> Insects</label
               >
             </li>
             <li class="themeButton">
-              <input type="radio" name="theme" id="trees" />
-              <label class="radioTheme" for="trees" id="trees">Trees</label>
+              <input type="radio" name="theme" class="theme" id="trees" />
+              <label class="radioTheme" for="trees" id="trees"> <i class="fas fa-tree"></i> Trees</label>
             </li>
             <li class="themeButton">
-              <input type="radio" name="theme" id="mammals" />
+              <input type="radio" name="theme" class="theme" id="mammals" />
               <label class="radioTheme" for="mammals" id="mammals"
-                >Mammals</label
+                ><i class="fas fa-dog"></i> Mammals</label
               >
             </li>
             <li class="themeButton">
-              <input type="radio" name="theme" id="flowers" />
+              <input type="radio" name="theme" class="theme" id="flowers" />
               <label class="radioTheme" for="flowers" id="flowers"
-                >Flowers</label
+                ><i class="fab fa-pagelines"></i> Flowers</label
               >
             </li>
             <li class="themeButton">
-              <input type="radio" name="theme" id="planets" />
+              <input type="radio" name="theme" class="theme" id="planets" />
               <label class="radioTheme" for="planets" id="planets"
-                >Planets</label
-              >
+                ><i class="fas fa-globe-asia"></i> Planets</label>
+              
             </li>
           </ul>
-          <label for="name" class="sr-only"
-            >Welcome, please submit your name
-          </label>
+          <ul class="levels">
+            <li class="levelButton">
+              <input type="radio" name="level" class="level" id="fiveQ"/>
+              <label class="radioLevel" for="fiveQ" id="5">5 Questions</label>
+            </li>
+            <li class="levelButton">
+              <input type="radio" name="level"class="level" id="tenQ" />
+              <label class="radioLevel" for="tenQ" id="10">10 Questions</label>
+            </li>
+         </ul>
+          <label for="name" class="sr-only">Welcome, please submit your name</label>
           <input
             type="text"
             id="name"
@@ -109,7 +117,7 @@
         </div>
       </section>
     </div>
-    <footer><p>2022 Juno College</p></footer>
+    <footer><p>Juno College 2022</p></footer>
 
     <script src="./script/main.js"></script>
   </body>

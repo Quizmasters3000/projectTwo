@@ -145,9 +145,68 @@ button {
   color: white;
   align-self: flex-end;
   transition: all 0.5s ease;
-  &:hover {
+  &:hover,
+  &:focus
+   {
     background-color: rgb(255, 183, 132);
     cursor: pointer;
   }
 }
 
+.themeButton {
+    background-color: #4f91f4;
+    border-radius: 0.2rem;
+    padding: 0.5rem 2rem;
+    border: none;
+    font-size: 1rem;
+    color: white;
+    align-self: flex-end;
+    transition: all 0.5s ease;
+    font-size: 1rem;
+    input[type="radio"] {
+      display: none;
+      position: absolute;
+    }
+    &:focus,
+    &:hover {
+      background-color: #2078fb;
+      cursor: pointer;
+    }
+}
+
+
+.levelButton {
+    background-color: #976ef7eb;
+    color: white;
+    align-self: flex-end;
+    border: none;
+    border-radius: 0.2rem;
+    padding: 0.5rem 2rem;
+    font-size: 1rem;
+    width: 100%;
+  input[type="radio"] {
+    display: none;
+    position: absolute;
+  }
+    &:focus,
+     &:hover {
+        background-color:#7d49f5eb;
+        transition: all 0.5s ease;
+        cursor: pointer;
+     }
+}
+.themeSubmit {
+  color: rgb(255, 255, 255);
+  background-color: #2078fb;
+  }
+
+.levelSubmit {
+    color: rgb(255, 255, 255);
+    background-color:#7d49f5eb;
+}
+
+.themes,
+.levels {
+  width: 100%;
+  margin-bottom: 0;
+}
