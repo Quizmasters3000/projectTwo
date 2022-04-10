@@ -68,16 +68,12 @@ quizApp.submitName.addEventListener("click", () => {
 
 quizApp.changeColor = function () {
   quizApp.gradient += 100;
-  document.querySelector(
-    "body"
-  ).style.background = `linear-gradient(${quizApp.gradient}deg, #2879f2, #976ef7eb)`;
-  console.log(quizApp.gradient);
+  document.querySelector("body").style.background = `linear-gradient(${quizApp.gradient}deg, #2879f2, #976ef7eb)`;
 };
 
 // Creates random number
 quizApp.getRandomNumber = function () {
   quizApp.surpriseNumber = Math.floor(Math.random() * 4);
-  console.log(quizApp.surpriseNumber);
   return quizApp.surpriseNumber;
 };
 
@@ -87,7 +83,13 @@ quizApp.pusher = function () {
 
 quizApp.queryTheme;
 quizApp.radioTheme = document.querySelectorAll(".radioTheme");
-console.log(quizApp.radioTheme);
+
+
+quizApp.optionA = document.getElementById("spanA")
+quizApp.optionB = document.getElementById("spanB")
+quizApp.optionC = document.getElementById("spanC")
+quizApp.optionD = document.getElementById("spanD")
+
 
 // Fetches random words
 quizApp.getRandomWord = function () {
@@ -99,23 +101,20 @@ quizApp.getRandomWord = function () {
       let wordC = resJson[2 + quizApp.choiceCounter].word;
       let wordD = resJson[3 + quizApp.choiceCounter].word;
 
-      document.getElementById("spanA").innerText = wordA;
-      document.getElementById("spanB").innerText = wordB;
-      document.getElementById("spanC").innerText = wordC;
-      document.getElementById("spanD").innerText = wordD;
+      quizApp.optionA.innerText = wordA
+      quizApp.optionB.innerText = wordB
+      quizApp.optionC.innerText = wordC
+      quizApp.optionD.innerText = wordD
+      
 
       quizApp.getRandomNumber();
 
       let randomWords = resJson;
-      console.log(randomWords);
       let randomWord =
         randomWords[quizApp.surpriseNumber + quizApp.choiceCounter].word;
-      console.log(randomWord);
+      // console.log(randomWord);
 
       quizApp.fetchDiction(randomWord);
-
-      // buttonSubmit();
-      //   selectedRadio(randomWord);
     });
 
   // Fetches dictionary meaning for words
@@ -129,9 +128,7 @@ quizApp.getRandomWord = function () {
           let def = resJson[0].shortdef[0];
           let definition = def.charAt(0).toUpperCase() + def.slice(1);
           quizApp.questionDefintion.innerText = definition;
-          console.log(resJson);
         } else {
-          console.log(resJson);
           throw Error("help");
         }
       })
@@ -147,7 +144,6 @@ quizApp.themeChoser = function () {
   quizApp.radioTheme.forEach((theme) => {
     theme.addEventListener("click", function () {
       if (theme.id) {
-        console.log(theme.id);
         quizApp.queryTheme = theme.id;
         quizApp.getRandomWord();
       }
@@ -186,8 +182,12 @@ quizApp.uncheckRadio = function () {
 // Adds animations to radio buttons
 quizApp.liButtons.forEach((li) => {
   li.addEventListener("click", () => {
-    quizApp.questionDefintion.classList.remove("faded");
+    let currentLetter = quizApp.lettersArrary[quizApp.quizLetter];
+    let liInnerText = li.children[1].innerText
+    let letterTitle = liInnerText.substring(1)
+    document.getElementById([currentLetter]).title = `${letterTitle}`
 
+    quizApp.questionDefintion.classList.remove("faded");
     quizApp.liButtons.forEach((li) => {
       li.classList.remove("animateButtons");
     });
@@ -201,12 +201,11 @@ quizApp.statusCounter = 1;
 quizApp.setStatusBar = function () {
   quizApp.statusCounter++;
   let percentage = (((quizApp.statusCounter / (quizApp.gameLength + 1)) * 100));
-  console.log(percentage);
   document.querySelector(".statusBar").style.width = `${percentage}%`;
 };
 
 // Checks to see what button was selected
-quizApp.selectedRadio = function (randomWord) {
+quizApp.selectedRadio = function () {
   let chosen;
   quizApp.radioChoices.forEach((choice) => {
     if (choice.checked) {
@@ -224,14 +223,16 @@ quizApp.submitAnswer.addEventListener("click", () => {
   quizApp.displayImage();
   quizApp.changeColor();
   let chosen = quizApp.selectedRadio();
+  
   if (chosen) {
     if (chosen == quizApp.surpriseNumber) {
       quizApp.scoreCounter++;
       let currentLetter = quizApp.lettersArrary[quizApp.quizLetter];
-      document.getElementById([currentLetter]).style.color = "aquamarine";
+      document.getElementById([currentLetter]).classList.add('rightAnswer')
     } else {
       let currentLetter = quizApp.lettersArrary[quizApp.quizLetter];
-      document.getElementById([currentLetter]).style.color = "red";
+      
+      document.getElementById([currentLetter]).classList.add('wrongAnswer')
     }
     // quizCounter++;
     if (quizApp.quizCounter < quizApp.gameLength) {
@@ -250,7 +251,6 @@ quizApp.submitAnswer.addEventListener("click", () => {
 // Generates random fun illustrations for the quiz card
 quizApp.getrandomImage = function () {
   quizApp.randomImage = Math.floor(Math.random() * quizApp.imageSources.length);
-  console.log(quizApp.randomImage, quizApp.imageSources[quizApp.randomImage]);
   return quizApp.imageSources[quizApp.randomImage];
 };
 

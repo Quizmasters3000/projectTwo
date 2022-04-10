@@ -591,16 +591,6 @@ footer p {
     opacity: 1;
   }
 }
-h1 {
-  margin: 0;
-  padding: 0;
-}
-h1 span > * {
-  opacity: 0;
-  margin: 0;
-  padding: 0;
-}
-
 .titleAnimation {
   -webkit-animation-name: titleAnimation;
           animation-name: titleAnimation;
@@ -665,6 +655,27 @@ h1 span > * {
           animation-delay: 2.2s;
 }
 
+@-webkit-keyframes letterReveal {}
+
+@keyframes letterReveal {}
+.wrongAnswer {
+  color: rgb(198, 0, 63);
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  -webkit-animation-name: letterReveal;
+          animation-name: letterReveal;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+
+.rightAnswer {
+  color: aquamarine;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  -webkit-animation-name: letterReveal;
+          animation-name: letterReveal;
+}
+
 .liButton {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -682,8 +693,8 @@ h1 span > * {
 }
 .liButton:hover, .liButton:focus {
   background-color: lightskyblue;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
   border: lightskyblue 1px solid;
   color: none;
 }
@@ -703,8 +714,8 @@ h1 span > * {
   margin: 0;
   color: none;
   display: inline-block;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
   opacity: 1;
   -webkit-transform: scale(1);
           transform: scale(1);
@@ -806,8 +817,8 @@ button {
   border: none;
   font-size: 1rem;
   color: white;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 .submitName:hover {
   background-color: rgb(255, 183, 132);
@@ -823,8 +834,8 @@ button {
   color: white;
   -ms-flex-item-align: end;
       align-self: flex-end;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 .againButton:hover {
   background-color: rgb(255, 183, 132);
@@ -840,8 +851,8 @@ button {
   color: white;
   -ms-flex-item-align: end;
       align-self: flex-end;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 .submitAnswer:hover {
   background-color: rgb(255, 183, 132);
