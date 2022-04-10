@@ -10,17 +10,27 @@
   .wrapper {
     width: 85%;
   }
+
+  
 }
 
+
 @media (max-width: 610px) {
+
+
   .wrapper {
     width: 90%;
   }
-}
-@media (max-width: 610px) {
   .themeButton,
   .levelButton {
     font-size: 0.7rem;
+  }
+
+  .quizSection {
+    .illustration {
+      max-width: 120px;
+      top: -2rem;
+    }
   }
 }
 // @media (max-width: 650px) {
@@ -52,6 +62,20 @@
   // }
   
 @media (max-width: 500px) {
+
+  h1 {
+    font-size: 1.7rem;
+  }
+
+  .themeButton {
+    label {
+      padding: 1rem 0.75rem;
+    }
+    
+  }
+
+  
+  
   .fas,
   .fab {
     display: none;
@@ -65,10 +89,21 @@
   .wrapper {
     width: 85%;
   }
+
+
+  .introCard {
+
+    padding: 1.5rem;
+    h1 {
+      font-size: 1.3rem;
+    }
+
+
+  }
+
+
 .themeButton {
-  font-size: .7em;
-  width: 100%;
-  padding: 0.5rem 1rem;
+  text-align: center;
 }
   .illustration {
     display: none;
@@ -107,4 +142,16 @@
   //     background-color: aquamarine;
   //   }
   // }
+}
+
+
+@media (max-width: 340px) {
+  .wrapper {
+    width: 80%;
+  }
+
+
+  h1 {
+    font-size: 1.2rem;
+  }
 }

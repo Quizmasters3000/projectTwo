@@ -18,4 +18,144 @@
 // Display Pages active
 .active {
     display: flex;
+    animation-name: cardFadeIn;
+    animation-duration: 1.1s;
+    animation-timing-function: ease-in;
+    transform: scale(1);
+}
+
+.deactivate {
+    animation-name: cardFadeOut;
+    animation-duration: 1.1s;
+    animation-timing-function: ease-out;
+    transform: scale(0);
+}
+
+.fadeIn {
+
+    animation-name: cardFadeIn;
+    animation-duration: 1.9s;
+    animation-timing-function: ease-in;
+}
+
+.fadeOut {
+    animation-name: cardFadeOut;
+    animation-duration: 0.9s;
+    animation-timing-function: ease-out;
+
+}
+
+.faded {
+    animation-name: cardFaded;
+    animation-duration: 0.9s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0, 1.26);
+}
+
+@keyframes cardFaded {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+@keyframes titleAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+h1 {
+
+    // margin: 0;
+    // padding: 0;
+    span {
+        // margin: 0;
+        // padding: 0;
+    }
+}
+
+.titleAnimation {
+    animation-name: titleAnimation;
+    animation-duration: 2.2s;
+    animation-delay: none;
+}
+
+// Title Letters
+
+.q {
+    animation-delay: 0.1s;
+}
+
+.u {
+    animation-delay: 0.3s;
+}
+
+.i {
+    animation-delay: 0.5s;
+}
+
+.z {
+    animation-delay: 0.7s;
+}
+
+.t {
+    animation-delay: 0.9s;
+}
+
+.i2 {
+    animation-delay: 1.1s;
+}
+
+.o {
+    animation-delay: 1.3s;
+}
+
+.n {
+    animation-delay: 1.5s;
+}
+
+.a {
+    animation-delay: 1.7s;
+}
+
+.r {
+    animation-delay: 1.9s;
+}
+
+.y {
+    animation-delay: 2.2s;
+}
+
+
+@keyframes letterReveal {}
+
+.wrongAnswer {
+    color: rgb(198, 0, 63);
+    animation-delay: 0.3s;
+    animation-name: letterReveal;
+    animation-duration: 1s;
+    // animation-direction: ;
+}
+
+.rightAnswer {
+    color: aquamarine;
+    animation-delay: 0.3s;
+    animation-name: letterReveal;
 }

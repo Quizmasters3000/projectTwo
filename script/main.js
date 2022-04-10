@@ -21,7 +21,8 @@ quizApp.theme = document.querySelectorAll(".theme");
 quizApp.radioLabels = document.querySelectorAll(".radioLabel");
 quizApp.nameElement = document.querySelector(".userName");
 quizApp.radioLevel = document.querySelectorAll(".radioLevel");
-quizApp.quizCounter = 1;
+quizApp.quizCounter = 0;
+quizApp.quizLetter = 0;
 quizApp.choiceCounter = 0;
 quizApp.scoreCounter = 0;
 quizApp.myLevel = 0;
@@ -40,17 +41,34 @@ quizApp.imageSources = [
   "./assets/6.png",
 ];
 
+quizApp.lettersArrary = [
+  "q",
+  "u",
+  "i",
+  "z",
+  "t",
+  "i2",
+  "o",
+  "n",
+  "a",
+  "r",
+  "y",
+];
+
 quizApp.submitName.addEventListener("click", () => {
   if (!quizApp.nameElement.value || quizApp.myLevel == 0 || !quizApp.queryTheme) {
     alert("Please complete all the fields");
   } else {
     quizApp.myName = quizApp.nameElement.value;
     const welcome = document.querySelector(".welcomeSection");
-    welcome.classList.remove("active");
-    quizApp.quizSection.classList.add("active");
-    quizApp.getrandomImage();
-    quizApp.displayImage();
-    return quizApp.myName;
+    welcome.classList.add("deactivate");
+    welcome.addEventListener("transitionend", () => {
+      welcome.classList.remove("active");
+      quizApp.quizSection.classList.add("active");
+      quizApp.getrandomImage();
+      quizApp.displayImage();
+      return quizApp.myName;
+    });
   }
 });
 
@@ -94,6 +112,12 @@ quizApp.pusher = function() {
   quizApp.choiceCounter = (Math.floor(Math.random() * 44)) 
 }
 
+quizApp.optionA = document.getElementById("spanA")
+quizApp.optionB = document.getElementById("spanB")
+quizApp.optionC = document.getElementById("spanC")
+quizApp.optionD = document.getElementById("spanD")
+
+
 // Fetches random words
 quizApp.getRandomWord = function () {
   fetch(`https://api.datamuse.com/words?rel_trg=${quizApp.queryTheme}&max=200`)
@@ -105,17 +129,15 @@ quizApp.getRandomWord = function () {
       let wordC = resJson[2 + quizApp.choiceCounter].word;
       let wordD = resJson[3 + quizApp.choiceCounter].word;
 
-      document.getElementById("spanA").innerText = wordA;
-      document.getElementById("spanB").innerText = wordB;
-      document.getElementById("spanC").innerText = wordC;
-      document.getElementById("spanD").innerText = wordD;
-
+      quizApp.optionA.innerText = wordA
+      quizApp.optionB.innerText = wordB
+      quizApp.optionC.innerText = wordC
+      quizApp.optionD.innerText = wordD
+      
       quizApp.getRandomNumber();
 
       let randomWords = resJson;
-      // console.log(randomWords);
       let randomWord = randomWords[quizApp.surpriseNumber + quizApp.choiceCounter].word;
-      // console.log(randomWord);
 
       quizApp.fetchDiction(randomWord);
     });
@@ -168,6 +190,8 @@ quizApp.loadQuiz = function () {
   });
 
 
+  quizApp.quizCounter++;
+  quizApp.quizLetter++
   // adds transitions
   quizApp.liButtons.forEach((li) => {
     li.classList.remove("clicked");
@@ -182,8 +206,14 @@ quizApp.uncheckRadio = function () {
 // Adds animations to radio buttons
 quizApp.liButtons.forEach((li) => {
   li.addEventListener("click", () => {
+    let currentLetter = quizApp.lettersArrary[quizApp.quizLetter];
+    let liInnerText = li.children[1].innerText
+    let letterTitle = liInnerText.substring(1)
+    document.getElementById([currentLetter]).title = `${letterTitle}`
+
+    quizApp.questionDefintion.classList.remove("faded");
     quizApp.liButtons.forEach((li) => {
-      li.classList.remove("animateInto");
+      li.classList.remove("animateButtons");
     });
     quizApp.liButtons.forEach((li) => li.classList.remove("clicked"));
     li.classList.add("clicked");
@@ -221,7 +251,7 @@ quizApp.setStatusBar = function () {
 };
 
 // Checks to see what button was selected
-quizApp.selectedRadio = function (randomWord) {
+quizApp.selectedRadio = function () {
   let chosen;
   quizApp.radioChoices.forEach((choice) => {
     if (choice.checked) {
@@ -242,9 +272,15 @@ quizApp.submitAnswer.addEventListener("click", () => {
   if (chosen) {
     if (chosen == quizApp.surpriseNumber) {
       quizApp.scoreCounter++;
+      let currentLetter = quizApp.lettersArrary[quizApp.quizLetter];
+      document.getElementById([currentLetter]).classList.add('rightAnswer')
+    } else {
+      let currentLetter = quizApp.lettersArrary[quizApp.quizLetter];
+      document.getElementById([currentLetter]).classList.add('wrongAnswer')
     }
     // quizCounter++;
     if (quizApp.quizCounter < quizApp.myLevel) {
+      quizApp.questionDefintion.classList.add("faded");
       quizApp.loadQuiz();
       quizApp.setStatusBar();
       console.log(quizApp.quizCounter);

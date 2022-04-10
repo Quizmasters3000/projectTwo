@@ -7,8 +7,11 @@
     <title>Quiztionary</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <script src="https://kit.fontawesome.com/453ecd0b52.js" crossorigin="anonymous"></script>   
-     <link
+    <script
+      src="https://kit.fontawesome.com/453ecd0b52.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
@@ -17,7 +20,19 @@
 
   <body>
     <div class="wrapper">
-      <h1>Quiztionary</h1>
+      <h1>
+        <span class="q titleAnimation" id="q">Q</span>
+        <span class="u titleAnimation" id="u">U</span>
+        <span class="i titleAnimation" id="i">I</span>
+        <span class="z titleAnimation" id="z">Z</span>
+        <span class="t titleAnimation" id="t">T</span>
+        <span class="i2 titleAnimation" id="i2">I</span>
+        <span class="o titleAnimation" id="o">O</span>
+        <span class="n titleAnimation" id="n">N</span>
+        <span class="a titleAnimation" id="a">A</span>
+        <span class="r titleAnimation" id="r">R</span>
+        <span class="y titleAnimation" id="y">Y</span>
+      </h1>
       <section class="welcomeSection active">
         <div class="introCard">
           <h3>Welcome to Quiztionary</h3>
@@ -26,46 +41,60 @@
             <li class="themeButton">
               <input type="radio" name="theme" class="theme" id="medicine" />
               <label class="radioTheme" for="medicine" id="medicine">
-              <i class="fas fa-user-md" alt="doctor icon"></i> Medicine</label>
+                <span> <i class="fas fa-user-md" alt="doctor icon"> </i></span
+                >Medicine</label
+              >
             </li>
             <li class="themeButton">
               <input type="radio" name="theme" class="theme" id="insects" />
               <label class="radioTheme" for="insects" id="insects">
-              <i class="fas fa-bug" alt="insects icon"></i>Insects</label>
+                <span>
+                  <i class="fas fa-bug" alt="insects icon"></i>Insects
+                </span>
+              </label>
             </li>
             <li class="themeButton">
               <input type="radio" name="theme" class="theme" id="trees" />
               <label class="radioTheme" for="trees" id="trees">
-              <i class="fas fa-tree" alt="tree icon" ></i> Trees</label>
+                <span> <i class="fas fa-tree" alt="tree icon"></i></span>
+                Trees</label
+              >
             </li>
             <li class="themeButton">
-              <input type="radio" name="theme" class="theme" id="mammals"/>
+              <input type="radio" name="theme" class="theme" id="mammals" />
               <label class="radioTheme" for="mammals" id="mammals">
-              <i class="fas fa-dog" alt="dog icon"></i> Mammals</label>
+                <span> <i class="fas fa-dog" alt="dog icon"></i></span>
+                Mammals</label
+              >
             </li>
             <li class="themeButton">
-              <input type="radio" name="theme" class="theme" id="flowers"/>
+              <input type="radio" name="theme" class="theme" id="flowers" />
               <label class="radioTheme" for="flowers" id="flowers">
-              <i class="fab fa-pagelines" alt="flower icon"></i> Flowers</label>
+                <span> <i class="fab fa-pagelines" alt="flower icon"></i></span>
+                Flowers</label
+              >
             </li>
             <li class="themeButton">
               <input type="radio" name="theme" class="theme" id="planets" />
               <label class="radioTheme" for="planets" id="planets">
-              <i class="fas fa-globe-asia" alt="globe icon"></i> Planets</label>
-              
+                <span><i class="fas fa-globe-asia" alt="globe icon"></i></span>
+                Planets</label
+              >
             </li>
           </ul>
           <ul class="levels">
             <li class="levelButton">
-              <input type="radio" name="level" class="level" id="fiveQ"/>
+              <input type="radio" name="level" class="level" id="fiveQ" />
               <label class="radioLevel" for="fiveQ" id="5">5 Questions</label>
             </li>
             <li class="levelButton">
-              <input type="radio" name="level"class="level" id="tenQ" />
+              <input type="radio" name="level" class="level" id="tenQ" />
               <label class="radioLevel" for="tenQ" id="10">10 Questions</label>
             </li>
-         </ul>
-          <label for="name" class="sr-only">Welcome, please submit your name</label>
+          </ul>
+          <label for="name" class="sr-only"
+            >Welcome, please submit your name</label
+          >
           <input
             type="text"
             id="name"
@@ -110,9 +139,9 @@
           </ul>
           <button class="submitAnswer">Next</button>
         </div>
-        <div class="status">
+        <!-- <div class="status">
           <div class="statusBar"></div>
-        </div>
+        </div> -->
       </section>
     </div>
     <footer><p>Juno College 2022</p></footer>
