@@ -306,6 +306,16 @@ h1 {
       align-self: flex-start;
 }
 
+h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.select {
+  color: #767575;
+  margin: 0.2rem auto 0;
+}
+
 .wrapper {
   margin: 0 auto;
   max-width: 1280px;
@@ -346,7 +356,7 @@ footer p {
       -ms-flex-align: center;
           align-items: center;
   border-radius: 1.2em;
-  height: 75vh;
+  height: 80vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -467,6 +477,21 @@ footer p {
   font-weight: 700;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
+}
+
+.themes {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.levels {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.5rem;
 }
 
 .status {
@@ -681,72 +706,128 @@ button {
   transition: all 0.5s ease;
 }
 
-.submitAnswer:hover {
+.submitAnswer:hover, .submitAnswer:focus {
   background-color: #ffb784;
   cursor: pointer;
 }
 
-@media (max-width: 950px) {
+.radioTheme,
+.radioLevel {
+  margin: 0 auto;
+}
+
+.themeButton {
+  background-color: #4f91f4;
+  border-radius: 0.2rem;
+  padding: 0.5rem 2rem;
+  border: none;
+  font-size: 1rem;
+  color: white;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  font-size: 1rem;
+}
+
+.themeButton input[type="radio"] {
+  display: none;
+  position: absolute;
+}
+
+.themeButton:focus, .themeButton:hover {
+  background-color: #2078fb;
+  cursor: pointer;
+}
+
+.levelButton {
+  background-color: #976ef7eb;
+  color: white;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  border: none;
+  border-radius: 0.2rem;
+  padding: 0.5rem 2rem;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.levelButton input[type="radio"] {
+  display: none;
+  position: absolute;
+}
+
+.levelButton:focus, .levelButton:hover {
+  background-color: #7d49f5eb;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.themeSubmit {
+  color: white;
+  background-color: #2078fb;
+}
+
+.levelSubmit {
+  color: white;
+  background-color: #7d49f5eb;
+}
+
+.themes,
+.levels {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+@media (max-width: 1300px) {
   .wrapper {
     width: 60%;
   }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 870px) {
   .wrapper {
-    width: 70%;
+    width: 85%;
+  }
+}
+
+@media (max-width: 610px) {
+  .wrapper {
+    width: 90%;
+  }
+}
+
+@media (max-width: 610px) {
+  .themeButton,
+  .levelButton {
+    font-size: 0.7rem;
   }
 }
 
 @media (max-width: 500px) {
-  .wrapper {
-    width: 75%;
+  .fas,
+  .fab {
+    display: none;
+  }
+  .levels {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 420px) {
   .wrapper {
-    width: 70%;
+    width: 85%;
   }
-  .quizCard {
-    height: 70vh;
-    padding: 1.3rem 1.3rem;
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
-  }
-  .quizCard .illustration {
-    top: 115px;
-    right: 13px;
-    width: 140px;
-    position: static;
-  }
-  .quizCard .questions {
-    margin-bottom: auto;
-  }
-  .quizCard .liButton {
-    padding: 0;
-  }
-  .quizCard .liButton label {
-    padding: 0.5rem;
-    font-size: 0.85rem;
-  }
-  .submitAnswer {
-    background-color: #f6d0b4;
-    border-radius: 0.2rem;
-    font-size: 0.85rem;
+  .themeButton {
+    font-size: .7em;
+    width: 100%;
     padding: 0.5rem 1rem;
   }
-  .status {
-    width: 50px;
-    height: 10px;
-    border: 1px solid #d88771;
-    border-radius: 5px;
-  }
-  .status .statusBar {
-    width: 0%;
-    height: 100%;
-    border-radius: 5px;
-    background-color: aquamarine;
+  .illustration {
+    display: none;
   }
 }
