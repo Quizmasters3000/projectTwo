@@ -27,7 +27,7 @@ quizApp.scoreCounter = 0;
 quizApp.myLevel = 0;
 quizApp.statusCounter = 1;
 quizApp.surpriseNumber;
-quizApp.gradient = 45;
+quizApp.gradient = 0;
 quizApp.myName;
 quizApp.gameLength = 10;
 quizApp.queryTheme;
@@ -41,8 +41,8 @@ quizApp.imageSources = [
 ];
 
 quizApp.submitName.addEventListener("click", () => {
-  if (!quizApp.nameElement.value) {
-    alert("Please enter your name");
+  if (!quizApp.nameElement.value || quizApp.myLevel == 0 || !quizApp.queryTheme) {
+    alert("Please complete all the fields");
   } else {
     quizApp.myName = quizApp.nameElement.value;
     const welcome = document.querySelector(".welcomeSection");
@@ -130,11 +130,16 @@ quizApp.getRandomWord = function () {
         if (resJson[0].shortdef[0]) {
           let def = resJson[0].shortdef[0];
           let definition = def.charAt(0).toUpperCase() + def.slice(1);
+          if (definition.length > 250){
+             document.querySelector(".questions").style.fontSize = "0.7rem";
+          } else {
+            document.querySelector(".questions").style.fontSize = "1rem";
+          }
           quizApp.questionDefintion.innerText = definition;
           console.log(resJson);
         } else {
           console.log(resJson);
-          throw Error("help");
+          throw Error("help")
         }
       })
       .catch((error) => {

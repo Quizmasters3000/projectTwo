@@ -152,7 +152,11 @@ button {
     cursor: pointer;
   }
 }
-
+.radioTheme, 
+.radioLevel{
+  margin: 0 auto;
+    
+    }
 .themeButton {
     background-color: #4f91f4;
     border-radius: 0.2rem;
@@ -173,7 +177,6 @@ button {
       cursor: pointer;
     }
 }
-
 
 .levelButton {
     background-color: #976ef7eb;
