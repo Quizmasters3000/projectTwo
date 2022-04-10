@@ -6,15 +6,21 @@
     transition: all 0.5s ease;
     // position: relative;
     align-items: center;
+    opacity: 1;
     justify-content: center;
     flex-direction: column;
     margin: 0.2rem 0;
-
+    opacity: 1;
+    animation: all;
+    animation-name: cardFadeIn;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
 }
 
 
 .introCard {
     background-color: white;
+    
     justify-content: space-between;
     align-items: center;
     border-radius: 1.2em;
@@ -25,6 +31,7 @@
     flex-direction: column;
     min-width: 100%;
     transition: all 0.5s ease;
+    
     
 
     input[type="text"] {

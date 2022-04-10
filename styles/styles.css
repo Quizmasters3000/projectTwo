@@ -330,11 +330,21 @@ footer p {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  opacity: 1;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   flex-direction: column;
   margin: 0.2rem 0;
+  opacity: 1;
+  -webkit-animation: all;
+          animation: all;
+  -webkit-animation-name: cardFadeIn;
+          animation-name: cardFadeIn;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
 }
 
 .introCard {
@@ -403,6 +413,8 @@ footer p {
       -ms-flex-direction: column;
           flex-direction: column;
   margin: 0.2rem 0;
+  -webkit-transform: scale(0.4);
+          transform: scale(0.4);
 }
 .quizSection .illustration {
   position: absolute;
@@ -486,6 +498,171 @@ footer p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-animation-name: cardFadeIn;
+          animation-name: cardFadeIn;
+  -webkit-animation-duration: 1.1s;
+          animation-duration: 1.1s;
+  -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.deactivate {
+  -webkit-animation-name: cardFadeOut;
+          animation-name: cardFadeOut;
+  -webkit-animation-duration: 1.1s;
+          animation-duration: 1.1s;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+.fadeIn {
+  -webkit-animation-name: cardFadeIn;
+          animation-name: cardFadeIn;
+  -webkit-animation-duration: 1.9s;
+          animation-duration: 1.9s;
+  -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
+}
+
+.fadeOut {
+  -webkit-animation-name: cardFadeOut;
+          animation-name: cardFadeOut;
+  -webkit-animation-duration: 0.9s;
+          animation-duration: 0.9s;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+}
+
+.faded {
+  -webkit-animation-name: cardFaded;
+          animation-name: cardFaded;
+  -webkit-animation-duration: 0.9s;
+          animation-duration: 0.9s;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0, 1.26);
+          animation-timing-function: cubic-bezier(0.4, 0, 0, 1.26);
+}
+
+@-webkit-keyframes cardFaded {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes cardFaded {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes titleAnimation {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes titleAnimation {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+h1 {
+  margin: 0;
+  padding: 0;
+}
+h1 span > * {
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.titleAnimation {
+  -webkit-animation-name: titleAnimation;
+          animation-name: titleAnimation;
+  -webkit-animation-duration: 2.2s;
+          animation-duration: 2.2s;
+  -webkit-animation-delay: none;
+          animation-delay: none;
+}
+
+.q {
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s;
+}
+
+.u {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+
+.i {
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+
+.z {
+  -webkit-animation-delay: 0.7s;
+          animation-delay: 0.7s;
+}
+
+.t {
+  -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s;
+}
+
+.i2 {
+  -webkit-animation-delay: 1.1s;
+          animation-delay: 1.1s;
+}
+
+.o {
+  -webkit-animation-delay: 1.3s;
+          animation-delay: 1.3s;
+}
+
+.n {
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+}
+
+.a {
+  -webkit-animation-delay: 1.7s;
+          animation-delay: 1.7s;
+}
+
+.r {
+  -webkit-animation-delay: 1.9s;
+          animation-delay: 1.9s;
+}
+
+.y {
+  -webkit-animation-delay: 2.2s;
+          animation-delay: 2.2s;
 }
 
 .liButton {
@@ -560,7 +737,7 @@ footer p {
           animation-delay: 700ms;
 }
 
-@-webkit-keyframes animateInto {
+@-webkit-keyframes animateButtons {
   0% {
     -webkit-transform: scale(1);
             transform: scale(1);
@@ -582,7 +759,7 @@ footer p {
   }
 }
 
-@keyframes animateInto {
+@keyframes animateButtons {
   0% {
     -webkit-transform: scale(1);
             transform: scale(1);
@@ -603,9 +780,9 @@ footer p {
     opacity: 1;
   }
 }
-.animateInto {
-  -webkit-animation-name: animateInto;
-          animation-name: animateInto;
+.animateButtons {
+  -webkit-animation-name: animateButtons;
+          animation-name: animateButtons;
   -webkit-animation-duration: 2s;
           animation-duration: 2s;
   -webkit-animation-delay: none;

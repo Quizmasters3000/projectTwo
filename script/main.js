@@ -14,7 +14,8 @@ quizApp.submitAnswer = document.querySelector(".submitAnswer");
 quizApp.questionDefintion = document.querySelector(".questions");
 quizApp.choices = document.querySelector(".choices");
 quizApp.liButtons = document.querySelectorAll(".liButton");
-quizApp.quizCounter = 1;
+quizApp.quizCounter = 0;
+quizApp.quizLetter = 0;
 quizApp.choiceCounter = 0;
 quizApp.scoreCounter = 0;
 quizApp.surpriseNumber;
@@ -23,6 +24,21 @@ quizApp.radioLabels = document.querySelectorAll(".radioLabel");
 quizApp.nameElement = document.querySelector(".userName");
 quizApp.myName;
 quizApp.gameLength = 10;
+
+quizApp.lettersArrary = [
+  "q",
+  "u",
+  "i",
+  "z",
+  "t",
+  "i2",
+  "o",
+  "n",
+  "a",
+  "r",
+  "y",
+];
+
 quizApp.imageSources = [
   "./assets/1.png",
   "./assets/2.png",
@@ -32,7 +48,6 @@ quizApp.imageSources = [
   "./assets/6.png",
 ];
 
-
 quizApp.submitName.addEventListener("click", () => {
   if (!quizApp.nameElement.value) {
     alert("Please enter your name");
@@ -40,12 +55,14 @@ quizApp.submitName.addEventListener("click", () => {
     quizApp.myName = quizApp.nameElement.value;
     // quizApp.myName = "stephen"
     const welcome = document.querySelector(".welcomeSection");
-    welcome.classList.remove("active");
-    // quizApp.quizWrapper.classList.remove("inactive");
-    quizApp.quizSection.classList.add("active");
-    quizApp.getrandomImage();
-    quizApp.displayImage();
-    return quizApp.myName;
+    welcome.classList.add("deactivate");
+    welcome.addEventListener("transitionend", () => {
+      welcome.classList.remove("active");
+      quizApp.quizSection.classList.add("active");
+      quizApp.getrandomImage();
+      quizApp.displayImage();
+      return quizApp.myName;
+    });
   }
 });
 
@@ -64,23 +81,19 @@ quizApp.getRandomNumber = function () {
   return quizApp.surpriseNumber;
 };
 
-
-quizApp.pusher = function() {
-  quizApp.choiceCounter = (Math.floor(Math.random() * 44)) 
-}
+quizApp.pusher = function () {
+  quizApp.choiceCounter = Math.floor(Math.random() * 44);
+};
 
 quizApp.queryTheme;
-quizApp.radioTheme = document.querySelectorAll('.radioTheme')
-console.log(quizApp.radioTheme)
-
-
+quizApp.radioTheme = document.querySelectorAll(".radioTheme");
+console.log(quizApp.radioTheme);
 
 // Fetches random words
 quizApp.getRandomWord = function () {
-  fetch(`http://api.datamuse.com/words?rel_trg=${quizApp.queryTheme}&max=200`)
+  fetch(`https://api.datamuse.com/words?rel_trg=${quizApp.queryTheme}&max=200`)
     .then((res) => res.json())
     .then((resJson) => {
-      
       let wordA = resJson[0 + quizApp.choiceCounter].word;
       let wordB = resJson[1 + quizApp.choiceCounter].word;
       let wordC = resJson[2 + quizApp.choiceCounter].word;
@@ -95,10 +108,12 @@ quizApp.getRandomWord = function () {
 
       let randomWords = resJson;
       console.log(randomWords);
-      let randomWord = randomWords[quizApp.surpriseNumber + quizApp.choiceCounter].word;
+      let randomWord =
+        randomWords[quizApp.surpriseNumber + quizApp.choiceCounter].word;
       console.log(randomWord);
 
       quizApp.fetchDiction(randomWord);
+
       // buttonSubmit();
       //   selectedRadio(randomWord);
     });
@@ -123,24 +138,22 @@ quizApp.getRandomWord = function () {
       .catch((error) => {
         if (error) {
           quizApp.getRandomWord();
-
         }
       });
   };
 };
 
-quizApp.themeChoser = function() {
-  quizApp.radioTheme.forEach(theme => {
-    theme.addEventListener('click', function() {
-      if(theme.id) {
-        console.log(theme.id)
-        quizApp.queryTheme = theme.id
-        quizApp.getRandomWord()
+quizApp.themeChoser = function () {
+  quizApp.radioTheme.forEach((theme) => {
+    theme.addEventListener("click", function () {
+      if (theme.id) {
+        console.log(theme.id);
+        quizApp.queryTheme = theme.id;
+        quizApp.getRandomWord();
       }
-    })
-  })
-}
-
+    });
+  });
+};
 
 quizApp.resetAll = function () {
   quizApp.getRandomWord(quizApp.surpriseNumber);
@@ -151,15 +164,15 @@ quizApp.resetAll = function () {
 quizApp.loadQuiz = function () {
   quizApp.uncheckRadio();
   quizApp.getRandomWord();
-  quizApp.pusher()
+  quizApp.pusher();
 
-  // selectedRadio()
   quizApp.liButtons.forEach((li) => {
-    li.classList.add("animateInto");
+    li.classList.add("animateButtons");
   });
 
   quizApp.quizCounter++;
-
+  quizApp.quizLetter++
+  // console.log(quizApp.quizCounter++);
   quizApp.liButtons.forEach((li) => {
     li.classList.remove("clicked");
   });
@@ -173,8 +186,10 @@ quizApp.uncheckRadio = function () {
 // Adds animations to radio buttons
 quizApp.liButtons.forEach((li) => {
   li.addEventListener("click", () => {
+    quizApp.questionDefintion.classList.remove("faded");
+
     quizApp.liButtons.forEach((li) => {
-      li.classList.remove("animateInto");
+      li.classList.remove("animateButtons");
     });
     quizApp.liButtons.forEach((li) => li.classList.remove("clicked"));
     li.classList.add("clicked");
@@ -185,7 +200,7 @@ quizApp.liButtons.forEach((li) => {
 quizApp.statusCounter = 1;
 quizApp.setStatusBar = function () {
   quizApp.statusCounter++;
-  let percentage = (quizApp.statusCounter / quizApp.gameLength) * 100;
+  let percentage = (((quizApp.statusCounter / (quizApp.gameLength + 1)) * 100));
   console.log(percentage);
   document.querySelector(".statusBar").style.width = `${percentage}%`;
 };
@@ -212,15 +227,21 @@ quizApp.submitAnswer.addEventListener("click", () => {
   if (chosen) {
     if (chosen == quizApp.surpriseNumber) {
       quizApp.scoreCounter++;
+      let currentLetter = quizApp.lettersArrary[quizApp.quizLetter];
+      document.getElementById([currentLetter]).style.color = "aquamarine";
+    } else {
+      let currentLetter = quizApp.lettersArrary[quizApp.quizLetter];
+      document.getElementById([currentLetter]).style.color = "red";
     }
     // quizCounter++;
     if (quizApp.quizCounter < quizApp.gameLength) {
+      quizApp.questionDefintion.classList.add("faded");
       quizApp.loadQuiz();
       quizApp.setStatusBar();
     } else {
       quizApp.quizCard.innerHTML = `
            <h2>Congrats ${quizApp.myName}!!! 
-           You got ${quizApp.scoreCounter}/ ${quizApp.gameLength} questions correctly</h2>
+           You got ${quizApp.scoreCounter}/ ${quizApp.gameLength + 1} questions correctly</h2>
            <button class="againButton" onclick="location.reload()">Try Again</button>`;
     }
   }
@@ -244,7 +265,7 @@ quizApp.displayImage = function () {
 // IIFE to start things off after logging user name
 quizApp.init = function () {
   (() => {
-    quizApp.themeChoser()
+    quizApp.themeChoser();
 
     quizApp.resetAll();
   })();

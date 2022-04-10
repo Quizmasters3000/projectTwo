@@ -66,7 +66,7 @@
   animation-delay: 700ms;
 }
 
-@keyframes animateInto {
+@keyframes animateButtons {
   0% {
     transform: scale(1);
     opacity: 1;
@@ -87,8 +87,8 @@
   }
 }
 
-.animateInto {
-  animation-name: animateInto;
+.animateButtons {
+  animation-name: animateButtons;
   animation-duration: 2s;
   animation-delay: none;
 }
