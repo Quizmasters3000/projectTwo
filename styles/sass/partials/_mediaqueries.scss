@@ -1,29 +1,24 @@
 // Media Queries
 
 @media (max-width: 1300px) {
-.wrapper {
-  width: 60%;
-}
+  .wrapper {
+    width: 60%;
+  }
 }
 
 @media (max-width: 870px) {
   .wrapper {
     width: 85%;
   }
-
-  
 }
 
-
 @media (max-width: 610px) {
-
-
   .wrapper {
     width: 90%;
   }
   .themeButton,
   .levelButton {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
   }
 
   .quizSection {
@@ -33,55 +28,35 @@
     }
   }
 }
-// @media (max-width: 650px) {
-//   .wrapper {
-//     width: 70%;
-//   }
-// }
-  // .submitAnswer {
-  //   margin-top: 0.5em;
-  //   padding: 1em 2em;
-  //   border: none;
-  //   width: 200px;
-  //   font-size: 0.9em;
-  // }
-  // .quizTitle {
-  //   width: 400px;
-  //   max-width: 400px;
-  //   height: 600px;
-  //   max-height: 600px;
-  //   .choice {
-  //   }
-  //   h3 {
-  //     font-size: 1.5em;
-  //     width: 300px;
-  //   }
-  //   .liButton {
-  //     font-size: 1em;
-  //   }
-  // }
-  
-@media (max-width: 500px) {
 
+@media (max-width: 500px) {
   h1 {
     font-size: 1.7rem;
   }
 
   .themeButton {
     label {
-      padding: 1rem 0.75rem;
+      padding: 0.6rem 0.7rem;
+      text-align: center;
+      span {
+        display: none;
+      }
     }
-    
-  }
-
-  
-  
-  .fas,
-  .fab {
-    display: none;
   }
   .levels {
     flex-direction: column;
+  }
+
+  .introCard {
+    p {
+      align-self: flex-start;
+      display: inline-block;
+      font-size: 0.82rem;
+      margin: 0;
+    }
+    input[type="text"] {
+      margin: 0;
+    }
   }
 }
 
@@ -90,21 +65,17 @@
     width: 85%;
   }
 
-
   .introCard {
-
-    padding: 1.5rem;
-    h1 {
-      font-size: 1.3rem;
-    }
-
-
+    padding: 1.7rem 1.5rem;
+    
+  }
+  h1 {
+    font-size: 1.1rem;
   }
 
-
-.themeButton {
-  text-align: center;
-}
+  .themeButton {
+    text-align: center;
+  }
   .illustration {
     display: none;
   }
@@ -134,7 +105,7 @@
   //   height: 10px;
   //   border: 1px solid #d88771;
   //   border-radius: 5px;
-  
+
   //   .statusBar {
   //     width: 0%;
   //     height: 100%;
@@ -144,14 +115,13 @@
   // }
 }
 
-
 @media (max-width: 340px) {
   .wrapper {
     width: 80%;
   }
 
-
   h1 {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
+  
 }
