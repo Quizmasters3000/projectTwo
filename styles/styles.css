@@ -400,6 +400,10 @@ footer p {
   color: #d88771;
 }
 
+.gameTitle {
+  font-size: 2rem;
+}
+
 .quizSection {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
@@ -673,13 +677,21 @@ footer p {
 
 @keyframes letterReveal {}
 .wrongAnswer {
-  color: rgb(198, 0, 63);
+  color: rgb(201, 1, 158);
   -webkit-animation-delay: 0.3s;
           animation-delay: 0.3s;
   -webkit-animation-name: letterReveal;
           animation-name: letterReveal;
   -webkit-animation-duration: 1s;
           animation-duration: 1s;
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+}
+.wrongAnswer:hover, .wrongAnswer:focus {
+  cursor: pointer;
+  color: rgb(133, 1, 105);
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .rightAnswer {
@@ -688,6 +700,14 @@ footer p {
           animation-delay: 0.3s;
   -webkit-animation-name: letterReveal;
           animation-name: letterReveal;
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+}
+.rightAnswer:hover, .rightAnswer:focus {
+  cursor: pointer;
+  color: rgb(20, 242, 168);
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .liButton {

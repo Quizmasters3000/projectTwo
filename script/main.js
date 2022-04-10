@@ -25,7 +25,7 @@ quizApp.quizCounter = 0;
 quizApp.quizLetter = 0;
 quizApp.choiceCounter = 0;
 quizApp.scoreCounter = 0;
-quizApp.myLevel = 0;
+quizApp.myLevel = 1;
 // quizApp.statusCounter = 1;
 quizApp.surpriseNumber;
 quizApp.gradient = 0;
@@ -67,12 +67,12 @@ quizApp.submitName.addEventListener("click", () => {
     if(quizApp.myLevel == 5) {
     console.log("it is 5")
     document.querySelector('h1').innerHTML = `
-    <h1>
+    <h1 class="gameTitle">
         <span class="q titleAnimation" id="q">Q</span>
         <span class="u titleAnimation" id="u">U</span>
         <span class="i titleAnimation" id="i">I</span>
         <span class="z titleAnimation" id="z">Z</span>
-        <span class="y titleAnimation" id="y">Y</span>
+        <span class="t titleAnimation" id="t">Y</span>
       </h1>
     `
   } 

@@ -81,15 +81,6 @@
 }
 
 
-h1 {
-
-    // margin: 0;
-    // padding: 0;
-    span {
-        // margin: 0;
-        // padding: 0;
-    }
-}
 
 .titleAnimation {
     animation-name: titleAnimation;
@@ -147,15 +138,30 @@ h1 {
 @keyframes letterReveal {}
 
 .wrongAnswer {
-    color: rgb(198, 0, 63);
+    color: rgb(201, 1, 158);
     animation-delay: 0.3s;
     animation-name: letterReveal;
     animation-duration: 1s;
-    // animation-direction: ;
+    transition: all 0.8s ease;
+    &:hover,
+    &:focus {
+        cursor: pointer;
+        color:rgb(133, 1, 105);
+        transition: all 0.2s ease;
+    }
+    
 }
 
 .rightAnswer {
     color: aquamarine;
     animation-delay: 0.3s;
     animation-name: letterReveal;
+    transition: all 0.8s ease;
+
+    &:hover,
+    &:focus {
+        cursor: pointer;
+        color: rgb(20, 242, 168);
+        transition: all 0.2s ease;
+    }
 }
