@@ -1,4 +1,5 @@
 // Intro Page Styling
+@import "variables";
 
 .welcomeSection {
     flex-direction: column;
@@ -23,24 +24,19 @@
     min-width: 100%;
     transition: all 0.5s ease;
     
-
     input[type="text"] {
         margin-top: 1em;
         width: 100%;
         height: 2rem;
         border-radius: 0.3em;
         font-size: 0.82rem;
-        border: 1px solid #d88771;
+        border: 1px solid $introPeach;
         padding-left: 1rem;
         font-family: inherit;
         color: inherit;
     }
     ::placeholder {
-        color:#d88771
+        color: $introPeach;
     }
-    
-}
-
-.gameTitle {
-    font-size: 2rem;
+ 
 }

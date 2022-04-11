@@ -1,11 +1,13 @@
 
 // Multiple Choice Radio 'Buttons'
+@import "variables";
+
 .liButton {
   justify-content: center;
   align-items: center;
   width: 100%;
   list-style: none;
-  border: 1px solid #d88771;
+  border: 1px solid $introPeach;
   border-radius: 0.3rem;
   position: relative;
   color: none;
@@ -95,7 +97,7 @@
 
 .clicked {
   background-color: lightskyblue;
-  color: rgb(255, 255, 255);
+  color: white;
   border: lightskyblue 1px solid;
 }
 
@@ -105,7 +107,7 @@ button {
   font-weight: 700;
 }
 .submitName {
-  background-color: rgb(255, 183, 132);
+  background-color: $darkerPeach;
   border-radius: 0.2rem;
   padding: 0.5rem 2rem;
   border: none;
@@ -114,13 +116,13 @@ button {
   transition: all 0.5s ease;
   
   &:hover {
-    background-color: rgb(246, 208, 180);
+    background-color: $lightPeach;
     cursor: pointer;
   }
 }
 
 .againButton {
-  background-color: rgb(255, 183, 132);
+  background-color: $lightPeach;
   border-radius: 0.2rem;
   padding: 0.5rem 2rem;
   border: none;
@@ -130,13 +132,13 @@ button {
   transition: all 0.5s ease;
 
   &:hover {
-    background-color: rgb(246, 208, 180);
+    background-color: $lightPeach;
     cursor: pointer;
   }
 }
 
 .submitAnswer {
-  background-color: rgb(255,183,132);
+  background-color: $lightPeach;
   border-radius: 0.2rem;
   padding: 0.5rem 2rem;
   border: none;
@@ -147,18 +149,13 @@ button {
   &:hover,
   &:focus
    {
-    background-color: rgb(246,208,180);
+    background-color: $lightPeach;
     cursor: pointer;
   }
 }
 
-// .radioTheme, 
-// .radioLevel{
-//   margin: 0 auto;
-    
-//     }
 .themeButton {
-    background-color: #4f91f4;
+    background-color: $themeBlue;
     border-radius: 0.2rem;
     border: none;
     font-size: 0.82rem;
@@ -187,13 +184,13 @@ button {
     }
     &:focus,
     &:hover {
-      background-color: #2078fb;
+      background-color: $submitBlue;
     }
 }
 
 // Buttons that select what level / amount of game questions
 .levelButton {
-    background-color: #976ef7eb;
+    background-color: $levelPurple;
     color: white;
     border: none;
     border-radius: 0.2rem;
@@ -216,7 +213,7 @@ button {
   }
     &:focus,
      &:hover {
-        background-color:#7d49f5eb;
+        background-color: $submitPurple;
         transition: all 0.5s ease;
         cursor: pointer;
      }
@@ -225,12 +222,12 @@ button {
 // Checked colors for Theme and Level buttons
 .themeSubmit {
   color: rgb(255, 255, 255);
-  background-color: #2078fb;
+  background-color: $submitBlue;
   }
 
 .levelSubmit {
     color: rgb(255, 255, 255);
-    background-color:#7d49f5eb;
+    background-color:$submitPurple;
 }
 
 .themes,

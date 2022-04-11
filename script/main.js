@@ -39,12 +39,11 @@ quizApp.welcome = document.querySelector(".welcomeSection");
 quizApp.finalSection = document.querySelector('.finalSection');
 quizApp.againButton = document.querySelector('.againButton');
 quizApp.imageSources = [
-  "./assets/1.png",
-  "./assets/2.png",
-  "./assets/3.png",
-  "./assets/4.png",
-  "./assets/5.png",
-  "./assets/6.png",
+  "./assets/animatedCoffeeCup.png",
+  "./assets/happyPerson.png",
+  "./assets/lightbulb.png",
+  "./assets/personTyping.png",
+  "./assets/peopleSharingIdeas.png",
 ];
 
 quizApp.lettersArrary = [
@@ -72,17 +71,16 @@ quizApp.submitName.addEventListener("click", () => {
     if (quizApp.myLevel == 5) {
       document.querySelector("h1").innerHTML = `
     <h1 class="gameTitle">
-        <span class="q titleAnimation" id="q">Q</span>
-        <span class="u titleAnimation" id="u">U</span>
-        <span class="i titleAnimation" id="i">I</span>
-        <span class="z titleAnimation" id="z">Z</span>
-        <span class="t titleAnimation" id="t">Y</span>
+        <span class="q titleAnimation" id="q">q</span>
+        <span class="u titleAnimation" id="u">u</span>
+        <span class="i titleAnimation" id="i">i</span>
+        <span class="z titleAnimation" id="z">z</span>
+        <span class="t titleAnimation" id="t">y</span>
       </h1>
     `;
     }
 
     quizApp.myName = quizApp.nameElement.value;
-    // const welcome = document.querySelector(".welcomeSection");
     quizApp.welcome.classList.add("deactivate");
     quizApp.welcome.addEventListener("transitionend", () => {
       quizApp.welcome.classList.remove("active");
@@ -167,7 +165,7 @@ quizApp.getRandomWord = function () {
         if (resJson[0].shortdef[0]) {
           let def = resJson[0].shortdef[0];
           let definition = def.charAt(0).toUpperCase() + def.slice(1);
-          if (definition.length > 250) {
+          if (definition.length > 200) {
             document.querySelector(".questions").style.fontSize = "0.7rem";
           } else {
             document.querySelector(".questions").style.fontSize = "1rem";
@@ -305,11 +303,16 @@ quizApp.getrandomImage = function () {
   return quizApp.imageSources[quizApp.randomImage];
 };
 
-// Displays random illustrations
+// Displays random illustrations / regex resolved using stackoverflow solutions
 quizApp.displayImage = function () {
   quizApp.illustration = document.querySelector(".illustration");
   quizApp.image = document.createElement("img");
+  
   quizApp.image.src = `${quizApp.imageSources[quizApp.randomImage]}`;
+  let altLong = quizApp.image.src.replace(/^.*?([^\\\/]*)$/, '$1')
+  let altText = altLong.replace(".png", "")
+  let altSentence = altText.replace(/([a-z])([A-Z])/g, '$1 $2');
+  quizApp.image.alt = altSentence
   quizApp.illustration.append(quizApp.image);
 };
 

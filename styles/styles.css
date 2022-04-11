@@ -142,24 +142,24 @@ select {
 }
 
 button,
-html [type=button],
-[type=reset],
-[type=submit] {
+html [type="button"],
+[type="reset"],
+[type="submit"] {
   -webkit-appearance: button;
 }
 
 button::-moz-focus-inner,
-[type=button]::-moz-focus-inner,
-[type=reset]::-moz-focus-inner,
-[type=submit]::-moz-focus-inner {
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
 
 button:-moz-focusring,
-[type=button]:-moz-focusring,
-[type=reset]:-moz-focusring,
-[type=submit]:-moz-focusring {
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -186,25 +186,25 @@ textarea {
   overflow: auto;
 }
 
-[type=checkbox],
-[type=radio] {
+[type="checkbox"],
+[type="radio"] {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 0;
 }
 
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 
-[type=search] {
+[type="search"] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
 
-[type=search]::-webkit-search-cancel-button,
-[type=search]::-webkit-search-decoration {
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -267,9 +267,9 @@ html {
 }
 
 body {
-  background: linear-gradient(100deg, #2879f2, rgba(151, 110, 247, 0.9215686275));
+  background: linear-gradient(100deg, #2879f2, #976ef7eb);
   font-family: "Poppins", sans-serif;
-  color: rgb(3, 3, 105);
+  color: #030369;
   font-weight: 500;
   margin: 0;
   padding: 0;
@@ -301,12 +301,19 @@ ul {
   margin: 0;
 }
 
-h1 {
+.gameTitle {
   padding: 0;
   margin: 0;
   color: white;
+  font-size: 2rem;
   -ms-flex-item-align: start;
       align-self: flex-start;
+  text-transform: uppercase;
+}
+
+a {
+  color: white;
+  text-decoration: none;
 }
 
 h3 {
@@ -314,9 +321,10 @@ h3 {
   font-size: 1rem;
 }
 
-.select {
-  color: rgb(118, 117, 117);
+.introCard p {
+  color: #767575;
   margin: 0.2rem auto 0;
+  text-align: center;
 }
 
 .wrapper {
@@ -378,7 +386,8 @@ footer p {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
-.introCard input[type=text] {
+
+.introCard input[type="text"] {
   margin-top: 1em;
   width: 100%;
   height: 2rem;
@@ -389,24 +398,21 @@ footer p {
   font-family: inherit;
   color: inherit;
 }
+
 .introCard ::-webkit-input-placeholder {
   color: #d88771;
 }
-.introCard ::-moz-placeholder {
-  color: #d88771;
-}
+
 .introCard :-ms-input-placeholder {
   color: #d88771;
 }
+
 .introCard ::-ms-input-placeholder {
   color: #d88771;
 }
+
 .introCard ::placeholder {
   color: #d88771;
-}
-
-.gameTitle {
-  font-size: 2rem;
 }
 
 .quizSection {
@@ -425,6 +431,7 @@ footer p {
       -ms-flex-direction: column;
           flex-direction: column;
 }
+
 .quizSection .illustration {
   position: absolute;
   top: -4.5rem;
@@ -456,6 +463,7 @@ footer p {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
+
 .quizCard .choices {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -475,6 +483,7 @@ footer p {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
+
 .quizCard .questions {
   font-size: calc(1vw + 1vh);
   text-align: center;
@@ -486,8 +495,10 @@ footer p {
 }
 
 .themes {
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
   gap: 0.5rem;
 }
 
@@ -538,8 +549,10 @@ footer p {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
+
 .finalCard .finalImage {
   width: 40%;
+  margin-right: 5.5rem;
 }
 
 .status {
@@ -551,6 +564,7 @@ footer p {
   transition: all 0.8s ease;
   margin-top: 1rem;
 }
+
 .status .statusBar {
   width: 10%;
   height: 100%;
@@ -635,6 +649,7 @@ footer p {
     opacity: 1;
   }
 }
+
 @-webkit-keyframes titleAnimation {
   0% {
     opacity: 0;
@@ -646,6 +661,7 @@ footer p {
     opacity: 1;
   }
 }
+
 @keyframes titleAnimation {
   0% {
     opacity: 0;
@@ -657,6 +673,7 @@ footer p {
     opacity: 1;
   }
 }
+
 .titleAnimation {
   -webkit-animation-name: titleAnimation;
           animation-name: titleAnimation;
@@ -723,9 +740,8 @@ footer p {
 
 @-webkit-keyframes letterReveal {}
 
-@keyframes letterReveal {}
-.wrongAnswer {
-  color: rgb(201, 1, 158);
+@keyframes letterReveal {}.wrongAnswer {
+  color: #c9019e;
   -webkit-animation-delay: 0.3s;
           animation-delay: 0.3s;
   -webkit-animation-name: letterReveal;
@@ -735,9 +751,10 @@ footer p {
   -webkit-transition: all 0.8s ease;
   transition: all 0.8s ease;
 }
+
 .wrongAnswer:hover, .wrongAnswer:focus {
   cursor: pointer;
-  color: rgb(133, 1, 105);
+  color: #850169;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
@@ -751,11 +768,16 @@ footer p {
   -webkit-transition: all 0.8s ease;
   transition: all 0.8s ease;
 }
+
 .rightAnswer:hover, .rightAnswer:focus {
   cursor: pointer;
-  color: rgb(20, 242, 168);
+  color: #14f2a8;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
+}
+
+.trophy {
+  width: 150%;
 }
 
 .liButton {
@@ -773,6 +795,7 @@ footer p {
   color: none;
   font-size: 0.82rem;
 }
+
 .liButton:hover, .liButton:focus {
   background-color: lightskyblue;
   -webkit-transition: all 0.3s ease;
@@ -780,14 +803,17 @@ footer p {
   border: lightskyblue 1px solid;
   color: none;
 }
+
 .liButton:active {
-  background-color: rgb(97, 190, 247);
+  background-color: #61bef7;
   color: none;
 }
-.liButton input[type=radio] {
+
+.liButton input[type="radio"] {
   display: none;
   position: absolute;
 }
+
 .liButton label {
   cursor: pointer;
   padding: 0.5rem 0.5rem 0.5rem 0.9rem;
@@ -803,6 +829,7 @@ footer p {
           transform: scale(1);
   text-transform: capitalize;
 }
+
 .liButton label span {
   text-transform: capitalize;
   margin-left: 1.4rem;
@@ -873,6 +900,7 @@ footer p {
     opacity: 1;
   }
 }
+
 .animateInto {
   -webkit-animation-name: animateInto;
           animation-name: animateInto;
@@ -884,7 +912,7 @@ footer p {
 
 .clicked {
   background-color: lightskyblue;
-  color: rgb(255, 255, 255);
+  color: white;
   border: lightskyblue 1px solid;
 }
 
@@ -893,7 +921,7 @@ button {
 }
 
 .submitName {
-  background-color: rgb(255, 183, 132);
+  background-color: #ffb784;
   border-radius: 0.2rem;
   padding: 0.5rem 2rem;
   border: none;
@@ -902,13 +930,14 @@ button {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
+
 .submitName:hover {
-  background-color: rgb(246, 208, 180);
+  background-color: #f6d0b4;
   cursor: pointer;
 }
 
 .againButton {
-  background-color: rgb(255, 183, 132);
+  background-color: #f6d0b4;
   border-radius: 0.2rem;
   padding: 0.5rem 2rem;
   border: none;
@@ -919,13 +948,14 @@ button {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
+
 .againButton:hover {
-  background-color: rgb(246, 208, 180);
+  background-color: #f6d0b4;
   cursor: pointer;
 }
 
 .submitAnswer {
-  background-color: rgb(255, 183, 132);
+  background-color: #f6d0b4;
   border-radius: 0.2rem;
   padding: 0.5rem 2rem;
   border: none;
@@ -936,13 +966,14 @@ button {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
+
 .submitAnswer:hover, .submitAnswer:focus {
-  background-color: rgb(246, 208, 180);
+  background-color: #f6d0b4;
   cursor: pointer;
 }
 
 .themeButton {
-  background-color: #4f91f4;
+  background-color: #6fa8fc;
   border-radius: 0.2rem;
   border: none;
   font-size: 0.82rem;
@@ -952,6 +983,7 @@ button {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
+
 .themeButton label {
   padding: 0.5rem 0.5rem 0.5rem 0.9rem;
   width: 100%;
@@ -964,27 +996,31 @@ button {
   opacity: 1;
   cursor: pointer;
 }
+
 .themeButton label span {
   margin-right: 0.9rem;
   display: inline-block;
   color: none;
 }
-.themeButton input[type=radio] {
+
+.themeButton input[type="radio"] {
   display: none;
   position: absolute;
 }
+
 .themeButton:focus, .themeButton:hover {
   background-color: #2078fb;
 }
 
 .levelButton {
-  background-color: rgba(151, 110, 247, 0.9215686275);
+  background-color: #9f79f9eb;
   color: white;
   border: none;
   border-radius: 0.2rem;
   font-size: 0.82rem;
   width: 100%;
 }
+
 .levelButton label {
   padding: 0.5rem 0.5rem 0.5rem 0.9rem;
   width: 100%;
@@ -997,25 +1033,27 @@ button {
   opacity: 1;
   cursor: pointer;
 }
-.levelButton input[type=radio] {
+
+.levelButton input[type="radio"] {
   display: none;
   position: absolute;
 }
+
 .levelButton:focus, .levelButton:hover {
-  background-color: rgba(125, 73, 245, 0.9215686275);
+  background-color: #7d49f5eb;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   cursor: pointer;
 }
 
 .themeSubmit {
-  color: rgb(255, 255, 255);
+  color: white;
   background-color: #2078fb;
 }
 
 .levelSubmit {
-  color: rgb(255, 255, 255);
-  background-color: rgba(125, 73, 245, 0.9215686275);
+  color: white;
+  background-color: #7d49f5eb;
 }
 
 .themes,
@@ -1028,31 +1066,35 @@ button {
     width: 60%;
   }
 }
+
 @media (max-width: 870px) {
   .wrapper {
     width: 85%;
   }
 }
+
 @media (max-width: 610px) {
   .wrapper {
     width: 90%;
   }
-
   .themeButton,
-.levelButton {
+  .levelButton {
     font-size: 0.75rem;
   }
-
   .quizSection .illustration {
     max-width: 120px;
     top: -2rem;
   }
-}
-@media (max-width: 500px) {
-  h1 {
-    font-size: 1.7rem;
+  .finalCard .finalImage {
+    width: 40%;
+    margin-right: 3rem;
   }
+}
 
+@media (max-width: 500px) {
+  .gameTitle {
+    font-size: 1.3rem;
+  }
   .themeButton label {
     padding: 0.6rem 0.7rem;
     text-align: center;
@@ -1060,14 +1102,12 @@ button {
   .themeButton label span {
     display: none;
   }
-
   .levels {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
   }
-
   .introCard p {
     -ms-flex-item-align: start;
         align-self: flex-start;
@@ -1075,37 +1115,37 @@ button {
     font-size: 0.82rem;
     margin: 0;
   }
-  .introCard input[type=text] {
+  .introCard input[type="text"] {
     margin: 0;
   }
 }
+
 @media (max-width: 420px) {
   .wrapper {
     width: 85%;
   }
-
   .introCard {
     padding: 1.7rem 1.5rem;
   }
-
-  h1 {
+  .gameTitle {
     font-size: 1.1rem;
   }
-
   .themeButton {
     text-align: center;
   }
-
   .illustration {
     display: none;
   }
 }
+
 @media (max-width: 340px) {
   .wrapper {
     width: 80%;
   }
-
-  h1 {
-    font-size: 1rem;
+  .gameTitle {
+    font-size: 0.7rem;
+  }
+  .introCard p {
+    font-size: .8rem;
   }
 }
