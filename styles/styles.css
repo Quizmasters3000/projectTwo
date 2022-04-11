@@ -332,6 +332,12 @@ footer p {
   color: white;
 }
 
+.welcomeSection,
+.quizSection,
+.finalSection {
+  margin: 0.6rem 0 1.1rem 0;
+}
+
 .welcomeSection {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -347,7 +353,6 @@ footer p {
       -ms-flex-pack: center;
           justify-content: center;
   flex-direction: column;
-  margin: 0.2rem 0;
 }
 
 .introCard {
@@ -419,7 +424,6 @@ footer p {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin: 0.2rem 0;
 }
 .quizSection .illustration {
   position: absolute;
@@ -492,6 +496,50 @@ footer p {
   display: -ms-flexbox;
   display: flex;
   gap: 0.5rem;
+}
+
+.finalSection {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: none;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  flex-direction: column;
+}
+
+.finalCard {
+  background-color: white;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 1.2em;
+  height: 80vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1.9rem 2.2rem;
+  border-radius: 1.2rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-width: 100%;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.finalCard .finalImage {
+  width: 40%;
 }
 
 .status {
@@ -845,7 +893,7 @@ button {
 }
 
 .submitName {
-  background-color: rgb(246, 208, 180);
+  background-color: rgb(255, 183, 132);
   border-radius: 0.2rem;
   padding: 0.5rem 2rem;
   border: none;
@@ -855,12 +903,12 @@ button {
   transition: all 0.5s ease;
 }
 .submitName:hover {
-  background-color: rgb(255, 183, 132);
+  background-color: rgb(246, 208, 180);
   cursor: pointer;
 }
 
 .againButton {
-  background-color: rgb(246, 208, 180);
+  background-color: rgb(255, 183, 132);
   border-radius: 0.2rem;
   padding: 0.5rem 2rem;
   border: none;
@@ -872,12 +920,12 @@ button {
   transition: all 0.5s ease;
 }
 .againButton:hover {
-  background-color: rgb(255, 183, 132);
+  background-color: rgb(246, 208, 180);
   cursor: pointer;
 }
 
 .submitAnswer {
-  background-color: rgb(246, 208, 180);
+  background-color: rgb(255, 183, 132);
   border-radius: 0.2rem;
   padding: 0.5rem 2rem;
   border: none;
@@ -889,7 +937,7 @@ button {
   transition: all 0.5s ease;
 }
 .submitAnswer:hover, .submitAnswer:focus {
-  background-color: rgb(255, 183, 132);
+  background-color: rgb(246, 208, 180);
   cursor: pointer;
 }
 

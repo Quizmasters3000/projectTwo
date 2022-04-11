@@ -21,17 +21,23 @@ quizApp.theme = document.querySelectorAll(".theme");
 quizApp.radioLabels = document.querySelectorAll(".radioLabel");
 quizApp.nameElement = document.querySelector(".userName");
 quizApp.radioLevel = document.querySelectorAll(".radioLevel");
-quizApp.quizCounter = 0;
+quizApp.quizCounter = 1;
 quizApp.quizLetter = 0;
 quizApp.choiceCounter = 0;
 quizApp.scoreCounter = 0;
 quizApp.myLevel = 1;
-// quizApp.statusCounter = 1;
 quizApp.surpriseNumber;
 quizApp.gradient = 0;
 quizApp.myName;
-// quizApp.gameLength = 10;
+quizApp.gameLength = 10;
 quizApp.queryTheme;
+quizApp.optionA = document.getElementById("spanA");
+quizApp.optionB = document.getElementById("spanB");
+quizApp.optionC = document.getElementById("spanC");
+quizApp.optionD = document.getElementById("spanD");
+quizApp.welcome = document.querySelector(".welcomeSection");
+quizApp.finalSection = document.querySelector('.finalSection');
+quizApp.againButton = document.querySelector('.againButton');
 quizApp.imageSources = [
   "./assets/1.png",
   "./assets/2.png",
@@ -63,10 +69,8 @@ quizApp.submitName.addEventListener("click", () => {
   ) {
     alert("Please complete all the fields");
   } else {
-
-    if(quizApp.myLevel == 5) {
-    console.log("it is 5")
-    document.querySelector('h1').innerHTML = `
+    if (quizApp.myLevel == 5) {
+      document.querySelector("h1").innerHTML = `
     <h1 class="gameTitle">
         <span class="q titleAnimation" id="q">Q</span>
         <span class="u titleAnimation" id="u">U</span>
@@ -74,15 +78,14 @@ quizApp.submitName.addEventListener("click", () => {
         <span class="z titleAnimation" id="z">Z</span>
         <span class="t titleAnimation" id="t">Y</span>
       </h1>
-    `
-  } 
-
+    `;
+    }
 
     quizApp.myName = quizApp.nameElement.value;
-    const welcome = document.querySelector(".welcomeSection");
-    welcome.classList.add("deactivate");
-    welcome.addEventListener("transitionend", () => {
-      welcome.classList.remove("active");
+    // const welcome = document.querySelector(".welcomeSection");
+    quizApp.welcome.classList.add("deactivate");
+    quizApp.welcome.addEventListener("transitionend", () => {
+      quizApp.welcome.classList.remove("active");
       quizApp.quizSection.classList.add("active");
       quizApp.getrandomImage();
       quizApp.displayImage();
@@ -97,7 +100,6 @@ quizApp.themeChoser = function () {
     theme.addEventListener("click", function () {
       if (theme.id) {
         quizApp.queryTheme = theme.id;
-        console.log(theme.id);
         quizApp.getRandomWord();
       }
     });
@@ -109,7 +111,6 @@ quizApp.userChoice = function () {
     level.addEventListener("click", function () {
       if (level.id) {
         quizApp.myLevel = level.id;
-        console.log(`you have chosen to play ${quizApp.myLevel}`);
       }
     });
   });
@@ -120,7 +121,6 @@ quizApp.changeColor = function () {
   document.querySelector(
     "body"
   ).style.background = `linear-gradient(${quizApp.gradient}deg, #2879f2, #976ef7eb)`;
-  console.log(quizApp.gradient);
 };
 
 // Creates random number (to create a random word to define)
@@ -132,11 +132,6 @@ quizApp.getRandomNumber = function () {
 quizApp.pusher = function () {
   quizApp.choiceCounter = Math.floor(Math.random() * 44);
 };
-
-quizApp.optionA = document.getElementById("spanA");
-quizApp.optionB = document.getElementById("spanB");
-quizApp.optionC = document.getElementById("spanC");
-quizApp.optionD = document.getElementById("spanD");
 
 // Fetches random words
 quizApp.getRandomWord = function () {
@@ -178,9 +173,7 @@ quizApp.getRandomWord = function () {
             document.querySelector(".questions").style.fontSize = "1rem";
           }
           quizApp.questionDefintion.innerText = definition;
-          console.log(resJson);
         } else {
-          console.log(resJson);
           throw Error("help");
         }
       })
@@ -227,7 +220,7 @@ quizApp.liButtons.forEach((li) => {
 
     quizApp.questionDefintion.classList.remove("faded");
     quizApp.liButtons.forEach((li) => {
-      li.classList.remove("animateButtons");
+      li.classList.remove("animateInto");
     });
     quizApp.liButtons.forEach((li) => li.classList.remove("clicked"));
     li.classList.add("clicked");
@@ -256,13 +249,10 @@ quizApp.levelButton.forEach((li) => {
   });
 });
 
-// Status bar functionality
-// quizApp.setStatusBar = function () {
-//   quizApp.statusCounter++;
-//   let percentage = (quizApp.statusCounter / quizApp.myLevel) * 100;
-//   console.log(percentage);
-//   document.querySelector(".statusBar").style.width = `${percentage}%`;
-// };
+// Reload Entire Game
+quizApp.againButton.addEventListener('click', () => {
+  location.reload()
+})
 
 // Checks to see what button was selected
 quizApp.selectedRadio = function () {
@@ -296,13 +286,15 @@ quizApp.submitAnswer.addEventListener("click", () => {
     if (quizApp.quizCounter < quizApp.myLevel) {
       quizApp.questionDefintion.classList.add("faded");
       quizApp.loadQuiz();
-      // quizApp.setStatusBar();
-      console.log(quizApp.quizCounter);
     } else {
-      quizApp.quizCard.innerHTML = `
-           <h2>Congrats ${quizApp.myName}!!! 
-           You got ${quizApp.scoreCounter}/ ${quizApp.myLevel} questions correctly</h2>
-           <button class="againButton" onclick="location.reload()">Try Again</button>`;
+      quizApp.quizSection.classList.add("deactivate");
+      quizApp.quizSection.addEventListener("transitionend", () => {
+        quizApp.quizSection.classList.remove("active");
+        quizApp.finalSection.classList.add("active");
+      });
+      document.querySelector('.congratsName').innerText = quizApp.myName;
+      document.querySelector('.congratsScore').innerText = quizApp.scoreCounter;
+      document.querySelector('.congratsTotal').innerText = quizApp.myLevel;
     }
   }
 });
@@ -310,7 +302,6 @@ quizApp.submitAnswer.addEventListener("click", () => {
 // Generates random fun illustrations for the quiz card
 quizApp.getrandomImage = function () {
   quizApp.randomImage = Math.floor(Math.random() * quizApp.imageSources.length);
-  // console.log(quizApp.randomImage, quizApp.imageSources[quizApp.randomImage]);
   return quizApp.imageSources[quizApp.randomImage];
 };
 
