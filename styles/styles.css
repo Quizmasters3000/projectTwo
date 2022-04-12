@@ -263,7 +263,7 @@ html {
 html {
   font-size: 125%;
   margin: 0;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 body {
@@ -288,7 +288,6 @@ body {
           align-items: center;
   height: 100vh;
   max-height: 100vh;
-  overflow-y: scroll;
 }
 
 img {
