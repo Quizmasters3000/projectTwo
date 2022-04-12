@@ -280,7 +280,7 @@ quizApp.submitAnswer.addEventListener("click", () => {
       let currentLetter = quizApp.lettersArrary[quizApp.quizLetter];
       document.getElementById([currentLetter]).classList.add("wrongAnswer");
     }
-    // quizCounter++;
+   // quizCounter++;
     if (quizApp.quizCounter < quizApp.myLevel) {
       quizApp.questionDefintion.classList.add("faded");
       quizApp.loadQuiz();
@@ -290,12 +290,23 @@ quizApp.submitAnswer.addEventListener("click", () => {
         quizApp.quizSection.classList.remove("active");
         quizApp.finalSection.classList.add("active");
       });
+      if (quizApp.scoreCounter < quizApp.myLevel/2) {
+      document.querySelector('.congratsOrBetterLuck').innerText = "Better luck next time";
       document.querySelector('.congratsName').innerText = quizApp.myName;
       document.querySelector('.congratsScore').innerText = quizApp.scoreCounter;
       document.querySelector('.congratsTotal').innerText = quizApp.myLevel;
+      document.querySelector('.trophy').src = "./assets/sadFaceOnTrophy.png"
+      } else {
+      document.querySelector('.congratsOrBetterLuck').innerText = "Well Done";
+      document.querySelector('.congratsName').innerText = quizApp.myName;
+      document.querySelector('.congratsScore').innerText = quizApp.scoreCounter;
+      document.querySelector('.congratsTotal').innerText = quizApp.myLevel;
+      document.querySelector('.trophy').src = "./assets/happyFaceOnTrophy.png"
+      }
     }
   }
 });
+
 
 // Generates random fun illustrations for the quiz card
 quizApp.getrandomImage = function () {

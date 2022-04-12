@@ -959,7 +959,7 @@ button {
 }
 
 .submitAnswer:hover, .submitAnswer:focus {
-  background-color: #f6d0b4;
+  background-color: #ffb784;
   cursor: pointer;
 }
 
