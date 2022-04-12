@@ -288,6 +288,7 @@ body {
           align-items: center;
   height: 100vh;
   max-height: 100vh;
+  overflow-y: scroll;
 }
 
 img {
@@ -774,10 +775,6 @@ footer p {
   color: #14f2a8;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
-}
-
-.trophy {
-  width: 150%;
 }
 
 .liButton {

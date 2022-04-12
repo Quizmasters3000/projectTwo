@@ -1,5 +1,6 @@
-@import "variables";
 // General Styling
+
+@import "variables";
 
 html {
     font-size: 125%;
@@ -20,6 +21,7 @@ body {
     align-items: center;
     height: 100vh;
     max-height: 100vh;
+    overflow-y: scroll;
 }
 
 img {
