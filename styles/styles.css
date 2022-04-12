@@ -1076,10 +1076,6 @@ button {
     max-width: 120px;
     top: -2rem;
   }
-  .finalCard .finalImage {
-    width: 40%;
-    margin-right: 3rem;
-  }
 }
 
 @media (max-width: 500px) {
