@@ -43,10 +43,7 @@ ul {
     align-self: flex-start;
     text-transform: uppercase;
 }
-a {
-    color: white;
-    text-decoration: none;
-}
+
 h3 {
     margin: 0;
     font-size: 1rem;
@@ -64,11 +61,12 @@ h3 {
 }
 
 footer {
-    p {
+    a {
         font-size: 0.6rem;
         padding: 0;
         margin: 0;
         color: white;
+        text-decoration: none;
     }
 }
 
